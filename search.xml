@@ -259,6 +259,107 @@
       </tags>
   </entry>
   <entry>
+    <title>Head First Java 第五章学习笔记</title>
+    <url>/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%BA%94%E7%AB%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h3 id="编写程序"><a href="#编写程序" class="headerlink" title="编写程序"></a>编写程序</h3><ol>
+<li>编写类的建议流程</li>
+</ol>
+<ul>
+<li>确定类的功能</li>
+<li>列出实例变量和方法</li>
+<li>编写方法的伪码</li>
+<li>编写方法的测试用程序</li>
+<li>实现类</li>
+<li>测试方法</li>
+<li>出错/重新设计</li>
+</ul>
+<ol start="2">
+<li>加强版<code>for</code>循环</li>
+</ol>
+<ul>
+<li><p><code>for each</code>循环</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(String name:nameArray)&#123;&#125;</span><br><span class="line"><span class="comment">// String不是固定的，是根据后面数组元素类型写的</span></span><br><span class="line"><span class="comment">// name自己定</span></span><br></pre></td></tr></table></figure>
+<p>类似于python里的</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">list</span>[]:</span><br><span class="line">    ......</span><br></pre></td></tr></table></figure>
+<span id="more"></span></li>
+<li><p>java还支持两个变量控制<code>for</code>循环</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> a=<span class="number">1</span>,b=<span class="number">4</span>;a &lt; b;a++,b--)&#123;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p>还有就是三个部分是可以缺省的，初始化可以放在循环体外部，增量表达可以放在循环体内部，条件表达式不推荐缺省。</p>
+</li>
+</ul>
+<ol start="3">
+<li><p>转换primitive主数据类型</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> variable_int = Integar.parseInt(variable_str);</span><br></pre></td></tr></table></figure></li>
+<li><p><code>i++</code>vs<code>++i</code></p>
+<p> <code>i++</code>:先运用变量的值再执行加减操作</p>
+<p> <code>++i</code>:先执行加减操作再运用变量的值</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>技术笔记</tag>
+        <tag>Head First Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Head First Java 第六章学习笔记</title>
+    <url>/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E5%85%AD%E7%AB%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h3 id="使用Java函数库"><a href="#使用Java函数库" class="headerlink" title="使用Java函数库"></a>使用Java函数库</h3><ol>
+<li>ArrayList初识<span id="more"></span>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 创建</span></span><br><span class="line">ArrayList&lt;Egg&gt; myList = <span class="keyword">new</span> ArrayList&lt;Egg&gt;();</span><br><span class="line"><span class="comment">// 增</span></span><br><span class="line">Egg s = <span class="keyword">new</span> Egg();</span><br><span class="line">Egg b = <span class="keyword">new</span> Egg();</span><br><span class="line">myList.add(s);</span><br><span class="line">myList.add(b);</span><br><span class="line"><span class="comment">// 另一种增加元素写法</span></span><br><span class="line">ArrayList&lt;Integer&gt; lst = <span class="keyword">new</span> ArrayList&lt;Integer&gt;()&#123;</span><br><span class="line">          &#123;</span><br><span class="line">              add(<span class="number">1</span>);</span><br><span class="line">              add(<span class="number">2</span>);</span><br><span class="line">              add(<span class="number">3</span>);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;;</span><br><span class="line"><span class="comment">// 查询大小</span></span><br><span class="line"><span class="keyword">int</span> theSize = myList.size();</span><br><span class="line"><span class="comment">// 查询特定元素</span></span><br><span class="line"><span class="keyword">boolean</span> isIn = myList.contains(s);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查询特定元素位置,返回-1代表没有</span></span><br><span class="line"><span class="keyword">int</span> idx = myList.indexOf(b);</span><br><span class="line"><span class="comment">// 判断集合是否为空</span></span><br><span class="line"><span class="keyword">boolean</span> isEpt = myList.isEmpty();</span><br><span class="line"><span class="comment">// 删除元素</span></span><br><span class="line">myList.remove(s);  <span class="comment">//删除成功的话返回true</span></span><br><span class="line">myList.remove(<span class="number">0</span>);  <span class="comment">//返回删除的元素</span></span><br><span class="line"><span class="comment">//可以是索引可以是对象，如果元素类型是int删除元素的话需要把int转为Object</span></span><br><span class="line">integers.remove(Integer.valueOf(<span class="number">2</span>));</span><br></pre></td></tr></table></figure></li>
+</ol>
+<ul>
+<li>遍历ArrayList的四种方法<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">  ArrayList&lt;String&gt; aList = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">  aList.add(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">  aList.add(<span class="string">&quot;b&quot;</span>);</span><br><span class="line">  aList.add(<span class="string">&quot;c&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">//方法1</span></span><br><span class="line">  Iterator it1 = aList.iterator();</span><br><span class="line">  <span class="keyword">while</span>(it1.hasNext())&#123;</span><br><span class="line">    System.out.println(it1.next());</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//方法2</span></span><br><span class="line">  <span class="keyword">for</span> (Iterator it2 = aList.iterator();it2.hasNext();)&#123;</span><br><span class="line">    System.out.println(it2.next());</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//方法3</span></span><br><span class="line">  <span class="keyword">for</span>(String tmp:aList )&#123;&#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//方法4</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; list.size(); i ++)&#123;</span><br><span class="line">        System.out.println(aList.get(i));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="2">
+<li>读取字符输入流</li>
+</ol>
+<ul>
+<li><code>Reader</code>是字符输入流的抽象基类<ul>
+<li><code>Read()</code>读取单个字符返回<code>int</code>,需要转成<code>char</code>，到达流的末尾时返回-1。</li>
+<li><code>read(char[] cbuf)</code></li>
+<li><code>close()</code></li>
+</ul>
+</li>
+<li><code>InputStreamReader</code>是字节流与字符流之间的桥梁，能将字节流输出为字符流，并且能为字节流指定字符集，可输出一个个的字符</li>
+<li><code>FileReader</code>把<code>FileInputStream</code>中的字节流根据字符编码方式转成字符流。</li>
+<li><code>BufferedReader</code>可以把字符输入流进行封装，将数据进行缓冲，提高读取效率。<ul>
+<li><code>readLine</code>读取一个文本行， 从字符输入流中读取文本，缓冲各个字符，从而提供字符、数组和行的高效读取。到达流末尾返回null</li>
+</ul>
+</li>
+</ul>
+<p>  <strong>读取控制台输入字符</strong><br>  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">BufferedReader is = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));</span><br></pre></td></tr></table></figure></p>
+<ol start="3">
+<li><strong>短运算符</strong></li>
+</ol>
+<ul>
+<li><p><code>&amp;&amp;</code>与</p>
+</li>
+<li><p><code>||</code></p>
+</li>
+<li><p><code>!=</code></p>
+</li>
+<li><p><code>!</code></p>
+<p><strong>长运算符</strong></p>
+</li>
+<li><p><code>&amp;</code></p>
+</li>
+<li><p><code>|</code></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>技术笔记</tag>
+        <tag>Head First Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Head First Java 第八章学习笔记</title>
     <url>/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E5%85%AB%E7%AB%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h3 id="接口与抽象类"><a href="#接口与抽象类" class="headerlink" title="接口与抽象类"></a>接口与抽象类</h3><p>1.<strong>抽象类</strong>：有些类不想要被初始化，也就是不想要被<code>new</code>出来，那么就标记这个类为<strong>抽象类</strong>，编译器就能知道这个类不能创建任何类型的实例。</p>
@@ -337,61 +438,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Head First Java 第六章学习笔记</title>
-    <url>/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E5%85%AD%E7%AB%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h3 id="使用Java函数库"><a href="#使用Java函数库" class="headerlink" title="使用Java函数库"></a>使用Java函数库</h3><ol>
-<li>ArrayList初识<span id="more"></span>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 创建</span></span><br><span class="line">ArrayList&lt;Egg&gt; myList = <span class="keyword">new</span> ArrayList&lt;Egg&gt;();</span><br><span class="line"><span class="comment">// 增</span></span><br><span class="line">Egg s = <span class="keyword">new</span> Egg();</span><br><span class="line">Egg b = <span class="keyword">new</span> Egg();</span><br><span class="line">myList.add(s);</span><br><span class="line">myList.add(b);</span><br><span class="line"><span class="comment">// 另一种增加元素写法</span></span><br><span class="line">ArrayList&lt;Integer&gt; lst = <span class="keyword">new</span> ArrayList&lt;Integer&gt;()&#123;</span><br><span class="line">          &#123;</span><br><span class="line">              add(<span class="number">1</span>);</span><br><span class="line">              add(<span class="number">2</span>);</span><br><span class="line">              add(<span class="number">3</span>);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;;</span><br><span class="line"><span class="comment">// 查询大小</span></span><br><span class="line"><span class="keyword">int</span> theSize = myList.size();</span><br><span class="line"><span class="comment">// 查询特定元素</span></span><br><span class="line"><span class="keyword">boolean</span> isIn = myList.contains(s);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查询特定元素位置,返回-1代表没有</span></span><br><span class="line"><span class="keyword">int</span> idx = myList.indexOf(b);</span><br><span class="line"><span class="comment">// 判断集合是否为空</span></span><br><span class="line"><span class="keyword">boolean</span> isEpt = myList.isEmpty();</span><br><span class="line"><span class="comment">// 删除元素</span></span><br><span class="line">myList.remove(s);  <span class="comment">//删除成功的话返回true</span></span><br><span class="line">myList.remove(<span class="number">0</span>);  <span class="comment">//返回删除的元素</span></span><br><span class="line"><span class="comment">//可以是索引可以是对象，如果元素类型是int删除元素的话需要把int转为Object</span></span><br><span class="line">integers.remove(Integer.valueOf(<span class="number">2</span>));</span><br></pre></td></tr></table></figure></li>
-</ol>
-<ul>
-<li>遍历ArrayList的四种方法<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">  ArrayList&lt;String&gt; aList = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">  aList.add(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">  aList.add(<span class="string">&quot;b&quot;</span>);</span><br><span class="line">  aList.add(<span class="string">&quot;c&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">//方法1</span></span><br><span class="line">  Iterator it1 = aList.iterator();</span><br><span class="line">  <span class="keyword">while</span>(it1.hasNext())&#123;</span><br><span class="line">    System.out.println(it1.next());</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//方法2</span></span><br><span class="line">  <span class="keyword">for</span> (Iterator it2 = aList.iterator();it2.hasNext();)&#123;</span><br><span class="line">    System.out.println(it2.next());</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//方法3</span></span><br><span class="line">  <span class="keyword">for</span>(String tmp:aList )&#123;&#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//方法4</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; list.size(); i ++)&#123;</span><br><span class="line">        System.out.println(aList.get(i));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<ol start="2">
-<li>读取字符输入流</li>
-</ol>
-<ul>
-<li><code>Reader</code>是字符输入流的抽象基类<ul>
-<li><code>Read()</code>读取单个字符返回<code>int</code>,需要转成<code>char</code>，到达流的末尾时返回-1。</li>
-<li><code>read(char[] cbuf)</code></li>
-<li><code>close()</code></li>
-</ul>
-</li>
-<li><code>InputStreamReader</code>是字节流与字符流之间的桥梁，能将字节流输出为字符流，并且能为字节流指定字符集，可输出一个个的字符</li>
-<li><code>FileReader</code>把<code>FileInputStream</code>中的字节流根据字符编码方式转成字符流。</li>
-<li><code>BufferedReader</code>可以把字符输入流进行封装，将数据进行缓冲，提高读取效率。<ul>
-<li><code>readLine</code>读取一个文本行， 从字符输入流中读取文本，缓冲各个字符，从而提供字符、数组和行的高效读取。到达流末尾返回null</li>
-</ul>
-</li>
-</ul>
-<p>  <strong>读取控制台输入字符</strong><br>  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">BufferedReader is = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));</span><br></pre></td></tr></table></figure></p>
-<ol start="3">
-<li><strong>短运算符</strong></li>
-</ol>
-<ul>
-<li><p><code>&amp;&amp;</code>与</p>
-</li>
-<li><p><code>||</code></p>
-</li>
-<li><p><code>!=</code></p>
-</li>
-<li><p><code>!</code></p>
-<p><strong>长运算符</strong></p>
-</li>
-<li><p><code>&amp;</code></p>
-</li>
-<li><p><code>|</code></p>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>技术笔记</tag>
-        <tag>Head First Java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Head First Java 第四章学习笔记</title>
     <url>/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E5%9B%9B%E7%AB%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h3 id="方法操作实例变量"><a href="#方法操作实例变量" class="headerlink" title="方法操作实例变量"></a>方法操作实例变量</h3><ol>
@@ -450,108 +496,6 @@
       <tags>
         <tag>技术笔记</tag>
         <tag>Head First Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Head First Java 第五章学习笔记</title>
-    <url>/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%BA%94%E7%AB%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h3 id="编写程序"><a href="#编写程序" class="headerlink" title="编写程序"></a>编写程序</h3><ol>
-<li>编写类的建议流程</li>
-</ol>
-<ul>
-<li>确定类的功能</li>
-<li>列出实例变量和方法</li>
-<li>编写方法的伪码</li>
-<li>编写方法的测试用程序</li>
-<li>实现类</li>
-<li>测试方法</li>
-<li>出错/重新设计</li>
-</ul>
-<ol start="2">
-<li>加强版<code>for</code>循环</li>
-</ol>
-<ul>
-<li><p><code>for each</code>循环</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(String name:nameArray)&#123;&#125;</span><br><span class="line"><span class="comment">// String不是固定的，是根据后面数组元素类型写的</span></span><br><span class="line"><span class="comment">// name自己定</span></span><br></pre></td></tr></table></figure>
-<p>类似于python里的</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">list</span>[]:</span><br><span class="line">    ......</span><br></pre></td></tr></table></figure>
-<span id="more"></span></li>
-<li><p>java还支持两个变量控制<code>for</code>循环</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> a=<span class="number">1</span>,b=<span class="number">4</span>;a &lt; b;a++,b--)&#123;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-<li><p>还有就是三个部分是可以缺省的，初始化可以放在循环体外部，增量表达可以放在循环体内部，条件表达式不推荐缺省。</p>
-</li>
-</ul>
-<ol start="3">
-<li><p>转换primitive主数据类型</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> variable_int = Integar.parseInt(variable_str);</span><br></pre></td></tr></table></figure></li>
-<li><p><code>i++</code>vs<code>++i</code></p>
-<p> <code>i++</code>:先运用变量的值再执行加减操作</p>
-<p> <code>++i</code>:先执行加减操作再运用变量的值</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>技术笔记</tag>
-        <tag>Head First Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Python零碎知识点记录01</title>
-    <url>/2021/03/05/Python%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B901/</url>
-    <content><![CDATA[<p>这个记录并不成体系，只是随手记录的知识点做个归档，积攒一部分后就继续补充  </p>
-<ol>
-<li><p>取整</p>
- <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a=<span class="number">3.14</span></span><br><span class="line"><span class="built_in">int</span>(a)  <span class="comment"># 向下取整 3</span></span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line">math.ceil(a)  <span class="comment"># 向上取整 4</span></span><br><span class="line"><span class="built_in">round</span>(a)  <span class="comment"># 四舍五入</span></span><br><span class="line">math.modf(a) <span class="comment"># (0.14,3.0) 分别取小数和整数部分，返回元组</span></span><br><span class="line">math.modf(<span class="number">4.2</span>)  </span><br><span class="line"><span class="comment"># (0.20000000000000018, 4.0)</span></span><br><span class="line"><span class="comment"># 按理说应该返回 (0.2, 4.0) 才对。这里涉及到了另一个问题，即浮点数在计算机中的表示，在计算机中是无法精确的表示小数的，至少目前的计算机做不到这一点。上例中最后的输出结果只是 0.2 在计算中的近似表示。Python 和 C 一样, 采用 IEEE 754 规范来存储浮点数。</span></span><br></pre></td></tr></table></figure>
-<span id="more"></span></li>
-<li><p>多个list创建dataframe</p>
- <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">msc = pd.DataFrame(fileNames, columns = [<span class="string">&#x27;filename&#x27;</span>])</span><br><span class="line">msc[<span class="string">&#x27;title&#x27;</span>] = mtitle</span><br><span class="line">msc[<span class="string">&#x27;artist&#x27;</span>] = martist</span><br><span class="line">msc[<span class="string">&#x27;size&#x27;</span>] = msize</span><br><span class="line">msc[<span class="string">&#x27;format&#x27;</span>] = mformat</span><br></pre></td></tr></table></figure></li>
-<li><p>dataframe打印不完整的问题</p>
- <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 显示所有列</span></span><br><span class="line">pd.set_option(<span class="string">&#x27;display.max_columns&#x27;</span>, <span class="literal">None</span>)</span><br><span class="line"><span class="comment"># 显示所有行</span></span><br><span class="line">pd.set_option(<span class="string">&#x27;display.max_rows&#x27;</span>, <span class="literal">None</span>)</span><br><span class="line"><span class="comment"># 设置value的显示长度为100，默认为50</span></span><br><span class="line">pd.set_option(<span class="string">&#x27;max_colwidth&#x27;</span>, <span class="number">100</span>)</span><br></pre></td></tr></table></figure></li>
-<li><p>字符串大小写转换和检测</p>
- <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">str1=<span class="string">&#x27;www.bing.com&#x27;</span></span><br><span class="line">str2=<span class="string">&#x27;i love mcs&#x27;</span></span><br><span class="line">str1.title()  <span class="comment"># Www.Bing.Com</span></span><br><span class="line">str2.title()  <span class="comment"># I Love Mcs</span></span><br><span class="line"><span class="comment"># title() 方法用于将字符串中每个单词的首字母转为大写，其他字母全部转为小写，转换完成后，此方法会返回转换得到的字符串。如果字符串中没有需要被转换的字符，此方法会将字符串原封不动地返回。</span></span><br><span class="line">str1.lower()  <span class="comment"># lower() 方法用于将字符串中的所有大写字母转换为小写字母，转换完成后，该方法会返回新得到的字符串。如果字符串中原本就都是小写字母，则该方法会返回原字符串。</span></span><br><span class="line">str1.upper()  <span class="comment"># upper()方法将字符串中的所有小写字母转换为大写字母，和以上两种方法的返回方式相同，即如果转换成功，则返回新字符串；反之，则返回原字符串。</span></span><br><span class="line">str1[<span class="number">0</span>].isupper()  <span class="comment">#false 是否大写</span></span><br><span class="line">str1[<span class="number">0</span>].islower()  <span class="comment">#true是否小写</span></span><br></pre></td></tr></table></figure>
-
-<p> 参考：<a href="https://www.jianshu.com/p/79e7b17cd831">https://www.jianshu.com/p/79e7b17cd831</a></p>
- <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">detectCapitalUse</span>(<span class="params">self, word: <span class="built_in">str</span></span>) -&gt; bool:</span></span><br><span class="line">        </span><br><span class="line">        is_upper = [c.isupper() <span class="keyword">for</span> c <span class="keyword">in</span> word]   <span class="comment"># 大写字符判别列表</span></span><br><span class="line">        is_lower = [c.islower() <span class="keyword">for</span> c <span class="keyword">in</span> word]   <span class="comment"># 小写字符判别列表</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">all</span>(is_upper) <span class="keyword">or</span> <span class="built_in">all</span>(is_lower):              </span><br><span class="line">        <span class="comment"># 如果所有字符都是大写或小写</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span>                         </span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">any</span>(is_upper):                               <span class="comment"># 如果既有大写又有小写</span></span><br><span class="line">            <span class="keyword">return</span> is_upper[<span class="number">0</span>] <span class="keyword">and</span> <span class="built_in">all</span>(is_lower[<span class="number">1</span>:])    <span class="comment"># 要求第一个大写其他都小写</span></span><br></pre></td></tr></table></figure>
-<p> 使用<code>any()</code>函数判断列表中是否有一个元素的布尔值为<code>True</code>，使用<code>all()</code>函数判断列表中是否所有元素的布尔值均为<code>True</code>。</p>
-</li>
-<li><p>dataframe导出excel</p>
- <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">writer = pd.ExcelWriter(<span class="string">&#x27;output.xlsx&#x27;</span>)</span><br><span class="line">info_marks.to_excel(writer)</span><br><span class="line">writer.save()</span><br><span class="line">print(<span class="string">&#x27;DataFrame is written successfully to the Excel File.&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
-<li><p>dataframe索引</p>
-</li>
-<li><p>判断nonetype<br><code>is None</code></p>
-</li>
-<li><p>lambda函数</p>
-</li>
-<li><p>dataframe大小</p>
- <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">len</span>(df) 	<span class="comment"># 获取行数</span></span><br><span class="line"><span class="built_in">len</span>(df.columns) 	<span class="comment"># 获取列数</span></span><br><span class="line">df.shape 	<span class="comment"># 获取行数和列数</span></span><br><span class="line">df.size 	<span class="comment"># 得到元素个数</span></span><br></pre></td></tr></table></figure></li>
-<li><p>dataframe删除列<br>df.drop()</p>
-</li>
-<li><p>split()和rsplit()</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用split：</span></span><br><span class="line">path = <span class="string">&#x27;www.chengxuan.com/subactivity/1033/page/1&#x27;</span> </span><br><span class="line">path.split(<span class="string">&quot;/&quot;</span>)</span><br><span class="line">[<span class="string">&quot;www.chengxuan.com&quot;</span>, <span class="string">&quot;subactivity&quot;</span>, <span class="number">1033</span>, <span class="string">&quot;page&quot;</span>, <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用rsplit：</span></span><br><span class="line">path.rsplit(<span class="string">&quot;/&quot;</span>,<span class="number">1</span>)</span><br><span class="line">[<span class="string">&quot;www.chengxuan.com/subactivity/1033/page&quot;</span>,<span class="string">&quot;1&quot;</span>]</span><br></pre></td></tr></table></figure>
-<p>rsplit(“/“,1) 中的1，表示从字符串右端分割1次，2就是分割2次。</p>
-</li>
-<li><p>python 删除字符串中以\x开头的特殊字符</p>
-</li>
-<li><p>python判断字符是否是中文</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_Chinese</span>(<span class="params">word</span>):</span></span><br><span class="line">    <span class="keyword">for</span> ch <span class="keyword">in</span> word:</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;\u4e00&#x27;</span> &lt;= ch &lt;= <span class="string">&#x27;\u9fff&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">print(is_Chinese(<span class="string">&quot;中文&quot;</span>))</span><br></pre></td></tr></table></figure></li>
-<li><p>使用split匹配多个分隔符</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">line = <span class="string">&#x27;ab/cd.123&#x27;</span></span><br><span class="line">print(line.split(<span class="string">&#x27;/&#x27;</span>))  <span class="comment"># [&#x27;ab&#x27;,&#x27;cd.123&#x27;]</span></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line">print(re.split(<span class="string">&#x27;[/\.]&#x27;</span>,line))  <span class="comment"># [&#x27;ab&#x27;, &#x27;cd&#x27;, &#x27;123&#x27;]</span></span><br></pre></td></tr></table></figure></li>
-<li><p>判断字符串是否全部是中文</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#检验是否全是中文字符</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_all_chinese</span>(<span class="params">strs</span>):</span></span><br><span class="line">    <span class="keyword">for</span> _char <span class="keyword">in</span> strs:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> <span class="string">&#x27;\u4e00&#x27;</span> &lt;= _char &lt;= <span class="string">&#x27;\u9fa5&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure></li>
-<li><p>字符串截取</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">str</span> = <span class="string">&#x27;0123456789&#x27;</span></span><br><span class="line">print(<span class="string">&quot;str[0:3]：&quot;</span>+<span class="built_in">str</span>[<span class="number">0</span>:<span class="number">3</span>])  <span class="comment"># 正向截取字符串 0~3（不包含3）   即 012</span></span><br><span class="line">print(<span class="string">&quot;str[:]:&quot;</span>+<span class="built_in">str</span>[:])  <span class="comment"># 正向输出所有字符串    即0123456789</span></span><br><span class="line">print(<span class="string">&quot;str[6:]：&quot;</span>+<span class="built_in">str</span>[<span class="number">6</span>:]) <span class="comment"># 正向输出字符串 从 5 （不含5）~  结束  即 6789</span></span><br><span class="line">print(<span class="string">&quot;str[:-3]：&quot;</span>+<span class="built_in">str</span>[:-<span class="number">3</span>]) <span class="comment"># 正向输出  从开始 ~ 倒数第第3个字符（不含第3个）即 0123456</span></span><br><span class="line">print(<span class="string">&quot;str[2]：&quot;</span>+<span class="built_in">str</span>[<span class="number">2</span>]) <span class="comment">#输出第3个字符 即 2</span></span><br><span class="line">print(<span class="string">&quot;str[:-1]：&quot;</span>+<span class="built_in">str</span>[:-<span class="number">1</span>]) <span class="comment"># 正向输出  从开始 ~ 倒数第第1个字符（不含第1个）即 012345678</span></span><br><span class="line">print(<span class="string">&quot;str[-1]：&quot;</span>+<span class="built_in">str</span>[-<span class="number">1</span>]) <span class="comment"># 输出最后一个字符 即 9</span></span><br><span class="line">print(<span class="string">&quot;str[-3:-1]:&quot;</span>+<span class="built_in">str</span>[-<span class="number">3</span>:-<span class="number">1</span>]) <span class="comment">#逆序输出  从倒数第 3 ~ 倒数第 1 （不含） 即 78</span></span><br><span class="line">print(<span class="string">&quot;str[-3:]:&quot;</span>+<span class="built_in">str</span>[-<span class="number">3</span>:]) <span class="comment"># 逆序输出 从倒数第 3 ~ 最后 即 789</span></span><br><span class="line">print(<span class="string">&quot;str[::-1]：&quot;</span>+<span class="built_in">str</span>[::-<span class="number">1</span>]) <span class="comment"># 逆序输出,连续输出所有字符串  即  9876543210</span></span><br><span class="line">print(<span class="string">&quot;str[::-2]：&quot;</span>+<span class="built_in">str</span>[::-<span class="number">2</span>]) <span class="comment"># 逆序输出，从最后一个开始，每隔2个字符串输出一个  97531</span></span><br><span class="line">print(<span class="string">&quot;str[::1]：&quot;</span>+<span class="built_in">str</span>[::<span class="number">1</span>]) <span class="comment"># 正序输出， 连续输出所有字符串  即  0123456789</span></span><br><span class="line">print(<span class="string">&quot;str[::2]：&quot;</span>+<span class="built_in">str</span>[::<span class="number">2</span>]) <span class="comment"># 正序输出，从第一个开始，每隔2个字符串输出一个即 02468</span></span><br><span class="line">print(<span class="string">&quot;str[:-2:4]:&quot;</span>+<span class="built_in">str</span>[:-<span class="number">2</span>:<span class="number">4</span>])<span class="comment"># 正序输出 从第一个开始，每隔4个字符输出一个 即 04</span></span><br><span class="line">print(<span class="string">&quot;str[1:-2:4]:&quot;</span>+<span class="built_in">str</span>[<span class="number">1</span>:-<span class="number">2</span>:<span class="number">4</span>])<span class="comment"># 正序输出 从第二个开始，每隔4个字符输出一个 即 15</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>粗略总结：str[(idx1):(idx2)(:step)]<br>idx1:起始index,包含进去<br>idx2:截止index,不包含<br>step:步长，负数的话就是反向输出</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Python</category>
-      </categories>
-      <tags>
-        <tag>技术笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -692,6 +636,62 @@
 ]]></content>
       <categories>
         <category>Java</category>
+      </categories>
+      <tags>
+        <tag>技术笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python零碎知识点记录01</title>
+    <url>/2021/03/05/Python%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B901/</url>
+    <content><![CDATA[<p>这个记录并不成体系，只是随手记录的知识点做个归档，积攒一部分后就继续补充  </p>
+<ol>
+<li><p>取整</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a=<span class="number">3.14</span></span><br><span class="line"><span class="built_in">int</span>(a)  <span class="comment"># 向下取整 3</span></span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line">math.ceil(a)  <span class="comment"># 向上取整 4</span></span><br><span class="line"><span class="built_in">round</span>(a)  <span class="comment"># 四舍五入</span></span><br><span class="line">math.modf(a) <span class="comment"># (0.14,3.0) 分别取小数和整数部分，返回元组</span></span><br><span class="line">math.modf(<span class="number">4.2</span>)  </span><br><span class="line"><span class="comment"># (0.20000000000000018, 4.0)</span></span><br><span class="line"><span class="comment"># 按理说应该返回 (0.2, 4.0) 才对。这里涉及到了另一个问题，即浮点数在计算机中的表示，在计算机中是无法精确的表示小数的，至少目前的计算机做不到这一点。上例中最后的输出结果只是 0.2 在计算中的近似表示。Python 和 C 一样, 采用 IEEE 754 规范来存储浮点数。</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span></li>
+<li><p>多个list创建dataframe</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">msc = pd.DataFrame(fileNames, columns = [<span class="string">&#x27;filename&#x27;</span>])</span><br><span class="line">msc[<span class="string">&#x27;title&#x27;</span>] = mtitle</span><br><span class="line">msc[<span class="string">&#x27;artist&#x27;</span>] = martist</span><br><span class="line">msc[<span class="string">&#x27;size&#x27;</span>] = msize</span><br><span class="line">msc[<span class="string">&#x27;format&#x27;</span>] = mformat</span><br></pre></td></tr></table></figure></li>
+<li><p>dataframe打印不完整的问题</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 显示所有列</span></span><br><span class="line">pd.set_option(<span class="string">&#x27;display.max_columns&#x27;</span>, <span class="literal">None</span>)</span><br><span class="line"><span class="comment"># 显示所有行</span></span><br><span class="line">pd.set_option(<span class="string">&#x27;display.max_rows&#x27;</span>, <span class="literal">None</span>)</span><br><span class="line"><span class="comment"># 设置value的显示长度为100，默认为50</span></span><br><span class="line">pd.set_option(<span class="string">&#x27;max_colwidth&#x27;</span>, <span class="number">100</span>)</span><br></pre></td></tr></table></figure></li>
+<li><p>字符串大小写转换和检测</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">str1=<span class="string">&#x27;www.bing.com&#x27;</span></span><br><span class="line">str2=<span class="string">&#x27;i love mcs&#x27;</span></span><br><span class="line">str1.title()  <span class="comment"># Www.Bing.Com</span></span><br><span class="line">str2.title()  <span class="comment"># I Love Mcs</span></span><br><span class="line"><span class="comment"># title() 方法用于将字符串中每个单词的首字母转为大写，其他字母全部转为小写，转换完成后，此方法会返回转换得到的字符串。如果字符串中没有需要被转换的字符，此方法会将字符串原封不动地返回。</span></span><br><span class="line">str1.lower()  <span class="comment"># lower() 方法用于将字符串中的所有大写字母转换为小写字母，转换完成后，该方法会返回新得到的字符串。如果字符串中原本就都是小写字母，则该方法会返回原字符串。</span></span><br><span class="line">str1.upper()  <span class="comment"># upper()方法将字符串中的所有小写字母转换为大写字母，和以上两种方法的返回方式相同，即如果转换成功，则返回新字符串；反之，则返回原字符串。</span></span><br><span class="line">str1[<span class="number">0</span>].isupper()  <span class="comment">#false 是否大写</span></span><br><span class="line">str1[<span class="number">0</span>].islower()  <span class="comment">#true是否小写</span></span><br></pre></td></tr></table></figure>
+
+<p> 参考：<a href="https://www.jianshu.com/p/79e7b17cd831">https://www.jianshu.com/p/79e7b17cd831</a></p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">detectCapitalUse</span>(<span class="params">self, word: <span class="built_in">str</span></span>) -&gt; bool:</span></span><br><span class="line">        </span><br><span class="line">        is_upper = [c.isupper() <span class="keyword">for</span> c <span class="keyword">in</span> word]   <span class="comment"># 大写字符判别列表</span></span><br><span class="line">        is_lower = [c.islower() <span class="keyword">for</span> c <span class="keyword">in</span> word]   <span class="comment"># 小写字符判别列表</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">all</span>(is_upper) <span class="keyword">or</span> <span class="built_in">all</span>(is_lower):              </span><br><span class="line">        <span class="comment"># 如果所有字符都是大写或小写</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span>                         </span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">any</span>(is_upper):                               <span class="comment"># 如果既有大写又有小写</span></span><br><span class="line">            <span class="keyword">return</span> is_upper[<span class="number">0</span>] <span class="keyword">and</span> <span class="built_in">all</span>(is_lower[<span class="number">1</span>:])    <span class="comment"># 要求第一个大写其他都小写</span></span><br></pre></td></tr></table></figure>
+<p> 使用<code>any()</code>函数判断列表中是否有一个元素的布尔值为<code>True</code>，使用<code>all()</code>函数判断列表中是否所有元素的布尔值均为<code>True</code>。</p>
+</li>
+<li><p>dataframe导出excel</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">writer = pd.ExcelWriter(<span class="string">&#x27;output.xlsx&#x27;</span>)</span><br><span class="line">info_marks.to_excel(writer)</span><br><span class="line">writer.save()</span><br><span class="line">print(<span class="string">&#x27;DataFrame is written successfully to the Excel File.&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
+<li><p>dataframe索引</p>
+</li>
+<li><p>判断nonetype<br><code>is None</code></p>
+</li>
+<li><p>lambda函数</p>
+</li>
+<li><p>dataframe大小</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">len</span>(df) 	<span class="comment"># 获取行数</span></span><br><span class="line"><span class="built_in">len</span>(df.columns) 	<span class="comment"># 获取列数</span></span><br><span class="line">df.shape 	<span class="comment"># 获取行数和列数</span></span><br><span class="line">df.size 	<span class="comment"># 得到元素个数</span></span><br></pre></td></tr></table></figure></li>
+<li><p>dataframe删除列<br>df.drop()</p>
+</li>
+<li><p>split()和rsplit()</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用split：</span></span><br><span class="line">path = <span class="string">&#x27;www.chengxuan.com/subactivity/1033/page/1&#x27;</span> </span><br><span class="line">path.split(<span class="string">&quot;/&quot;</span>)</span><br><span class="line">[<span class="string">&quot;www.chengxuan.com&quot;</span>, <span class="string">&quot;subactivity&quot;</span>, <span class="number">1033</span>, <span class="string">&quot;page&quot;</span>, <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用rsplit：</span></span><br><span class="line">path.rsplit(<span class="string">&quot;/&quot;</span>,<span class="number">1</span>)</span><br><span class="line">[<span class="string">&quot;www.chengxuan.com/subactivity/1033/page&quot;</span>,<span class="string">&quot;1&quot;</span>]</span><br></pre></td></tr></table></figure>
+<p>rsplit(“/“,1) 中的1，表示从字符串右端分割1次，2就是分割2次。</p>
+</li>
+<li><p>python 删除字符串中以\x开头的特殊字符</p>
+</li>
+<li><p>python判断字符是否是中文</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_Chinese</span>(<span class="params">word</span>):</span></span><br><span class="line">    <span class="keyword">for</span> ch <span class="keyword">in</span> word:</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;\u4e00&#x27;</span> &lt;= ch &lt;= <span class="string">&#x27;\u9fff&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">print(is_Chinese(<span class="string">&quot;中文&quot;</span>))</span><br></pre></td></tr></table></figure></li>
+<li><p>使用split匹配多个分隔符</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">line = <span class="string">&#x27;ab/cd.123&#x27;</span></span><br><span class="line">print(line.split(<span class="string">&#x27;/&#x27;</span>))  <span class="comment"># [&#x27;ab&#x27;,&#x27;cd.123&#x27;]</span></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line">print(re.split(<span class="string">&#x27;[/\.]&#x27;</span>,line))  <span class="comment"># [&#x27;ab&#x27;, &#x27;cd&#x27;, &#x27;123&#x27;]</span></span><br></pre></td></tr></table></figure></li>
+<li><p>判断字符串是否全部是中文</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#检验是否全是中文字符</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_all_chinese</span>(<span class="params">strs</span>):</span></span><br><span class="line">    <span class="keyword">for</span> _char <span class="keyword">in</span> strs:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> <span class="string">&#x27;\u4e00&#x27;</span> &lt;= _char &lt;= <span class="string">&#x27;\u9fa5&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure></li>
+<li><p>字符串截取</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">str</span> = <span class="string">&#x27;0123456789&#x27;</span></span><br><span class="line">print(<span class="string">&quot;str[0:3]：&quot;</span>+<span class="built_in">str</span>[<span class="number">0</span>:<span class="number">3</span>])  <span class="comment"># 正向截取字符串 0~3（不包含3）   即 012</span></span><br><span class="line">print(<span class="string">&quot;str[:]:&quot;</span>+<span class="built_in">str</span>[:])  <span class="comment"># 正向输出所有字符串    即0123456789</span></span><br><span class="line">print(<span class="string">&quot;str[6:]：&quot;</span>+<span class="built_in">str</span>[<span class="number">6</span>:]) <span class="comment"># 正向输出字符串 从 5 （不含5）~  结束  即 6789</span></span><br><span class="line">print(<span class="string">&quot;str[:-3]：&quot;</span>+<span class="built_in">str</span>[:-<span class="number">3</span>]) <span class="comment"># 正向输出  从开始 ~ 倒数第第3个字符（不含第3个）即 0123456</span></span><br><span class="line">print(<span class="string">&quot;str[2]：&quot;</span>+<span class="built_in">str</span>[<span class="number">2</span>]) <span class="comment">#输出第3个字符 即 2</span></span><br><span class="line">print(<span class="string">&quot;str[:-1]：&quot;</span>+<span class="built_in">str</span>[:-<span class="number">1</span>]) <span class="comment"># 正向输出  从开始 ~ 倒数第第1个字符（不含第1个）即 012345678</span></span><br><span class="line">print(<span class="string">&quot;str[-1]：&quot;</span>+<span class="built_in">str</span>[-<span class="number">1</span>]) <span class="comment"># 输出最后一个字符 即 9</span></span><br><span class="line">print(<span class="string">&quot;str[-3:-1]:&quot;</span>+<span class="built_in">str</span>[-<span class="number">3</span>:-<span class="number">1</span>]) <span class="comment">#逆序输出  从倒数第 3 ~ 倒数第 1 （不含） 即 78</span></span><br><span class="line">print(<span class="string">&quot;str[-3:]:&quot;</span>+<span class="built_in">str</span>[-<span class="number">3</span>:]) <span class="comment"># 逆序输出 从倒数第 3 ~ 最后 即 789</span></span><br><span class="line">print(<span class="string">&quot;str[::-1]：&quot;</span>+<span class="built_in">str</span>[::-<span class="number">1</span>]) <span class="comment"># 逆序输出,连续输出所有字符串  即  9876543210</span></span><br><span class="line">print(<span class="string">&quot;str[::-2]：&quot;</span>+<span class="built_in">str</span>[::-<span class="number">2</span>]) <span class="comment"># 逆序输出，从最后一个开始，每隔2个字符串输出一个  97531</span></span><br><span class="line">print(<span class="string">&quot;str[::1]：&quot;</span>+<span class="built_in">str</span>[::<span class="number">1</span>]) <span class="comment"># 正序输出， 连续输出所有字符串  即  0123456789</span></span><br><span class="line">print(<span class="string">&quot;str[::2]：&quot;</span>+<span class="built_in">str</span>[::<span class="number">2</span>]) <span class="comment"># 正序输出，从第一个开始，每隔2个字符串输出一个即 02468</span></span><br><span class="line">print(<span class="string">&quot;str[:-2:4]:&quot;</span>+<span class="built_in">str</span>[:-<span class="number">2</span>:<span class="number">4</span>])<span class="comment"># 正序输出 从第一个开始，每隔4个字符输出一个 即 04</span></span><br><span class="line">print(<span class="string">&quot;str[1:-2:4]:&quot;</span>+<span class="built_in">str</span>[<span class="number">1</span>:-<span class="number">2</span>:<span class="number">4</span>])<span class="comment"># 正序输出 从第二个开始，每隔4个字符输出一个 即 15</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>粗略总结：str[(idx1):(idx2)(:step)]<br>idx1:起始index,包含进去<br>idx2:截止index,不包含<br>step:步长，负数的话就是反向输出</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Python</category>
       </categories>
       <tags>
         <tag>技术笔记</tag>

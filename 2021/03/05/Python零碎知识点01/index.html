@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/pikachu_pointer.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/pikachu_pointer.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/pikachu_pointer.png">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="这个记录并不成体系，只是随手记录的知识点做个归档，积攒一部分后就继续补充    取整  123456789a&#x3D;3.14int(a)  # 向下取整 3import mathmath.ceil(a)  # 向上取整 4round(a)  # 四舍五入math.modf(a) # (0.14,3.0) 分别取小数和整数部分，返回元组math.modf(4.2)  # (0.20000000000000">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python零碎知识点记录01">
+<meta property="og:url" content="http://example.com/2021/03/05/Python%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B901/index.html">
+<meta property="og:site_name" content="pikapika的学习记录">
+<meta property="og:description" content="这个记录并不成体系，只是随手记录的知识点做个归档，积攒一部分后就继续补充    取整  123456789a&#x3D;3.14int(a)  # 向下取整 3import mathmath.ceil(a)  # 向上取整 4round(a)  # 四舍五入math.modf(a) # (0.14,3.0) 分别取小数和整数部分，返回元组math.modf(4.2)  # (0.20000000000000">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-03-05T10:27:38.000Z">
+<meta property="article:modified_time" content="2021-03-05T10:37:45.548Z">
+<meta property="article:author" content="pikapikaxiu">
+<meta property="article:tag" content="技术笔记">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/03/05/Python%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B901/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>Python零碎知识点记录01 | pikapika的学习记录</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">pikapika的学习记录</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="Searching..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/05/Python%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B901/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/pikachu_pointer.png">
+      <meta itemprop="name" content="pikapikaxiu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="pikapika的学习记录">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Python零碎知识点记录01
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-03-05 18:27:38 / Modified: 18:37:45" itemprop="dateCreated datePublished" datetime="2021-03-05T18:27:38+08:00">2021-03-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>这个记录并不成体系，只是随手记录的知识点做个归档，积攒一部分后就继续补充  </p>
+<ol>
+<li><p>取整</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a=<span class="number">3.14</span></span><br><span class="line"><span class="built_in">int</span>(a)  <span class="comment"># 向下取整 3</span></span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line">math.ceil(a)  <span class="comment"># 向上取整 4</span></span><br><span class="line"><span class="built_in">round</span>(a)  <span class="comment"># 四舍五入</span></span><br><span class="line">math.modf(a) <span class="comment"># (0.14,3.0) 分别取小数和整数部分，返回元组</span></span><br><span class="line">math.modf(<span class="number">4.2</span>)  </span><br><span class="line"><span class="comment"># (0.20000000000000018, 4.0)</span></span><br><span class="line"><span class="comment"># 按理说应该返回 (0.2, 4.0) 才对。这里涉及到了另一个问题，即浮点数在计算机中的表示，在计算机中是无法精确的表示小数的，至少目前的计算机做不到这一点。上例中最后的输出结果只是 0.2 在计算中的近似表示。Python 和 C 一样, 采用 IEEE 754 规范来存储浮点数。</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span></li>
+<li><p>多个list创建dataframe</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">msc = pd.DataFrame(fileNames, columns = [<span class="string">&#x27;filename&#x27;</span>])</span><br><span class="line">msc[<span class="string">&#x27;title&#x27;</span>] = mtitle</span><br><span class="line">msc[<span class="string">&#x27;artist&#x27;</span>] = martist</span><br><span class="line">msc[<span class="string">&#x27;size&#x27;</span>] = msize</span><br><span class="line">msc[<span class="string">&#x27;format&#x27;</span>] = mformat</span><br></pre></td></tr></table></figure></li>
+<li><p>dataframe打印不完整的问题</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 显示所有列</span></span><br><span class="line">pd.set_option(<span class="string">&#x27;display.max_columns&#x27;</span>, <span class="literal">None</span>)</span><br><span class="line"><span class="comment"># 显示所有行</span></span><br><span class="line">pd.set_option(<span class="string">&#x27;display.max_rows&#x27;</span>, <span class="literal">None</span>)</span><br><span class="line"><span class="comment"># 设置value的显示长度为100，默认为50</span></span><br><span class="line">pd.set_option(<span class="string">&#x27;max_colwidth&#x27;</span>, <span class="number">100</span>)</span><br></pre></td></tr></table></figure></li>
+<li><p>字符串大小写转换和检测</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">str1=<span class="string">&#x27;www.bing.com&#x27;</span></span><br><span class="line">str2=<span class="string">&#x27;i love mcs&#x27;</span></span><br><span class="line">str1.title()  <span class="comment"># Www.Bing.Com</span></span><br><span class="line">str2.title()  <span class="comment"># I Love Mcs</span></span><br><span class="line"><span class="comment"># title() 方法用于将字符串中每个单词的首字母转为大写，其他字母全部转为小写，转换完成后，此方法会返回转换得到的字符串。如果字符串中没有需要被转换的字符，此方法会将字符串原封不动地返回。</span></span><br><span class="line">str1.lower()  <span class="comment"># lower() 方法用于将字符串中的所有大写字母转换为小写字母，转换完成后，该方法会返回新得到的字符串。如果字符串中原本就都是小写字母，则该方法会返回原字符串。</span></span><br><span class="line">str1.upper()  <span class="comment"># upper()方法将字符串中的所有小写字母转换为大写字母，和以上两种方法的返回方式相同，即如果转换成功，则返回新字符串；反之，则返回原字符串。</span></span><br><span class="line">str1[<span class="number">0</span>].isupper()  <span class="comment">#false 是否大写</span></span><br><span class="line">str1[<span class="number">0</span>].islower()  <span class="comment">#true是否小写</span></span><br></pre></td></tr></table></figure>
+
+<p> 参考：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/79e7b17cd831">https://www.jianshu.com/p/79e7b17cd831</a></p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">detectCapitalUse</span>(<span class="params">self, word: <span class="built_in">str</span></span>) -&gt; bool:</span></span><br><span class="line">        </span><br><span class="line">        is_upper = [c.isupper() <span class="keyword">for</span> c <span class="keyword">in</span> word]   <span class="comment"># 大写字符判别列表</span></span><br><span class="line">        is_lower = [c.islower() <span class="keyword">for</span> c <span class="keyword">in</span> word]   <span class="comment"># 小写字符判别列表</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">all</span>(is_upper) <span class="keyword">or</span> <span class="built_in">all</span>(is_lower):              </span><br><span class="line">        <span class="comment"># 如果所有字符都是大写或小写</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span>                         </span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">any</span>(is_upper):                               <span class="comment"># 如果既有大写又有小写</span></span><br><span class="line">            <span class="keyword">return</span> is_upper[<span class="number">0</span>] <span class="keyword">and</span> <span class="built_in">all</span>(is_lower[<span class="number">1</span>:])    <span class="comment"># 要求第一个大写其他都小写</span></span><br></pre></td></tr></table></figure>
+<p> 使用<code>any()</code>函数判断列表中是否有一个元素的布尔值为<code>True</code>，使用<code>all()</code>函数判断列表中是否所有元素的布尔值均为<code>True</code>。</p>
+</li>
+<li><p>dataframe导出excel</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">writer = pd.ExcelWriter(<span class="string">&#x27;output.xlsx&#x27;</span>)</span><br><span class="line">info_marks.to_excel(writer)</span><br><span class="line">writer.save()</span><br><span class="line">print(<span class="string">&#x27;DataFrame is written successfully to the Excel File.&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
+<li><p>dataframe索引</p>
+</li>
+<li><p>判断nonetype<br><code>is None</code></p>
+</li>
+<li><p>lambda函数</p>
+</li>
+<li><p>dataframe大小</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">len</span>(df) 	<span class="comment"># 获取行数</span></span><br><span class="line"><span class="built_in">len</span>(df.columns) 	<span class="comment"># 获取列数</span></span><br><span class="line">df.shape 	<span class="comment"># 获取行数和列数</span></span><br><span class="line">df.size 	<span class="comment"># 得到元素个数</span></span><br></pre></td></tr></table></figure></li>
+<li><p>dataframe删除列<br>df.drop()</p>
+</li>
+<li><p>split()和rsplit()</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用split：</span></span><br><span class="line">path = <span class="string">&#x27;www.chengxuan.com/subactivity/1033/page/1&#x27;</span> </span><br><span class="line">path.split(<span class="string">&quot;/&quot;</span>)</span><br><span class="line">[<span class="string">&quot;www.chengxuan.com&quot;</span>, <span class="string">&quot;subactivity&quot;</span>, <span class="number">1033</span>, <span class="string">&quot;page&quot;</span>, <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用rsplit：</span></span><br><span class="line">path.rsplit(<span class="string">&quot;/&quot;</span>,<span class="number">1</span>)</span><br><span class="line">[<span class="string">&quot;www.chengxuan.com/subactivity/1033/page&quot;</span>,<span class="string">&quot;1&quot;</span>]</span><br></pre></td></tr></table></figure>
+<p>rsplit(“/“,1) 中的1，表示从字符串右端分割1次，2就是分割2次。</p>
+</li>
+<li><p>python 删除字符串中以\x开头的特殊字符</p>
+</li>
+<li><p>python判断字符是否是中文</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_Chinese</span>(<span class="params">word</span>):</span></span><br><span class="line">    <span class="keyword">for</span> ch <span class="keyword">in</span> word:</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;\u4e00&#x27;</span> &lt;= ch &lt;= <span class="string">&#x27;\u9fff&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">print(is_Chinese(<span class="string">&quot;中文&quot;</span>))</span><br></pre></td></tr></table></figure></li>
+<li><p>使用split匹配多个分隔符</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">line = <span class="string">&#x27;ab/cd.123&#x27;</span></span><br><span class="line">print(line.split(<span class="string">&#x27;/&#x27;</span>))  <span class="comment"># [&#x27;ab&#x27;,&#x27;cd.123&#x27;]</span></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line">print(re.split(<span class="string">&#x27;[/\.]&#x27;</span>,line))  <span class="comment"># [&#x27;ab&#x27;, &#x27;cd&#x27;, &#x27;123&#x27;]</span></span><br></pre></td></tr></table></figure></li>
+<li><p>判断字符串是否全部是中文</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#检验是否全是中文字符</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_all_chinese</span>(<span class="params">strs</span>):</span></span><br><span class="line">    <span class="keyword">for</span> _char <span class="keyword">in</span> strs:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> <span class="string">&#x27;\u4e00&#x27;</span> &lt;= _char &lt;= <span class="string">&#x27;\u9fa5&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure></li>
+<li><p>字符串截取</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">str</span> = <span class="string">&#x27;0123456789&#x27;</span></span><br><span class="line">print(<span class="string">&quot;str[0:3]：&quot;</span>+<span class="built_in">str</span>[<span class="number">0</span>:<span class="number">3</span>])  <span class="comment"># 正向截取字符串 0~3（不包含3）   即 012</span></span><br><span class="line">print(<span class="string">&quot;str[:]:&quot;</span>+<span class="built_in">str</span>[:])  <span class="comment"># 正向输出所有字符串    即0123456789</span></span><br><span class="line">print(<span class="string">&quot;str[6:]：&quot;</span>+<span class="built_in">str</span>[<span class="number">6</span>:]) <span class="comment"># 正向输出字符串 从 5 （不含5）~  结束  即 6789</span></span><br><span class="line">print(<span class="string">&quot;str[:-3]：&quot;</span>+<span class="built_in">str</span>[:-<span class="number">3</span>]) <span class="comment"># 正向输出  从开始 ~ 倒数第第3个字符（不含第3个）即 0123456</span></span><br><span class="line">print(<span class="string">&quot;str[2]：&quot;</span>+<span class="built_in">str</span>[<span class="number">2</span>]) <span class="comment">#输出第3个字符 即 2</span></span><br><span class="line">print(<span class="string">&quot;str[:-1]：&quot;</span>+<span class="built_in">str</span>[:-<span class="number">1</span>]) <span class="comment"># 正向输出  从开始 ~ 倒数第第1个字符（不含第1个）即 012345678</span></span><br><span class="line">print(<span class="string">&quot;str[-1]：&quot;</span>+<span class="built_in">str</span>[-<span class="number">1</span>]) <span class="comment"># 输出最后一个字符 即 9</span></span><br><span class="line">print(<span class="string">&quot;str[-3:-1]:&quot;</span>+<span class="built_in">str</span>[-<span class="number">3</span>:-<span class="number">1</span>]) <span class="comment">#逆序输出  从倒数第 3 ~ 倒数第 1 （不含） 即 78</span></span><br><span class="line">print(<span class="string">&quot;str[-3:]:&quot;</span>+<span class="built_in">str</span>[-<span class="number">3</span>:]) <span class="comment"># 逆序输出 从倒数第 3 ~ 最后 即 789</span></span><br><span class="line">print(<span class="string">&quot;str[::-1]：&quot;</span>+<span class="built_in">str</span>[::-<span class="number">1</span>]) <span class="comment"># 逆序输出,连续输出所有字符串  即  9876543210</span></span><br><span class="line">print(<span class="string">&quot;str[::-2]：&quot;</span>+<span class="built_in">str</span>[::-<span class="number">2</span>]) <span class="comment"># 逆序输出，从最后一个开始，每隔2个字符串输出一个  97531</span></span><br><span class="line">print(<span class="string">&quot;str[::1]：&quot;</span>+<span class="built_in">str</span>[::<span class="number">1</span>]) <span class="comment"># 正序输出， 连续输出所有字符串  即  0123456789</span></span><br><span class="line">print(<span class="string">&quot;str[::2]：&quot;</span>+<span class="built_in">str</span>[::<span class="number">2</span>]) <span class="comment"># 正序输出，从第一个开始，每隔2个字符串输出一个即 02468</span></span><br><span class="line">print(<span class="string">&quot;str[:-2:4]:&quot;</span>+<span class="built_in">str</span>[:-<span class="number">2</span>:<span class="number">4</span>])<span class="comment"># 正序输出 从第一个开始，每隔4个字符输出一个 即 04</span></span><br><span class="line">print(<span class="string">&quot;str[1:-2:4]:&quot;</span>+<span class="built_in">str</span>[<span class="number">1</span>:-<span class="number">2</span>:<span class="number">4</span>])<span class="comment"># 正序输出 从第二个开始，每隔4个字符输出一个 即 15</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>粗略总结：str[(idx1):(idx2)(:step)]<br>idx1:起始index,包含进去<br>idx2:截止index,不包含<br>step:步长，负数的话就是反向输出</p>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/" rel="tag"># 技术笔记</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%B8%83%E7%AB%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="Head First Java 第七章学习笔记">
+      <i class="fa fa-chevron-left"></i> Head First Java 第七章学习笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/03/05/Java%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AE%B0%E5%BD%9501/" rel="next" title="Java零碎知识点记录01">
+      Java零碎知识点记录01 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="pikapikaxiu"
+      src="/images/pikachu_pointer.png">
+  <p class="site-author-name" itemprop="name">pikapikaxiu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">pikapikaxiu</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

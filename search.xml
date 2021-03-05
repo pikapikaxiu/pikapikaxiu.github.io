@@ -1,6 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Head First Java 第七章学习笔记</title>
+    <url>/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%B8%83%E7%AB%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h3 id="继承与多态"><a href="#继承与多态" class="headerlink" title="继承与多态"></a>继承与多态</h3><ol>
+<li><p>了解继承</p>
+<p> 子类继承父类的实例变量和方法，子类可以加入自己的实例变量和方法，还可以覆盖继承来的方法。</p>
+<p> 当调用对象引用的方法时，会调用到与该对象类型最接近的方法，也就是<strong>最低阶的会胜出</strong>。最低阶的意思就是在层次树的最下方，JVM会从下往上找直到找到为止。</p>
+<span id="more"></span></li>
+<li><p><code>is-a</code>关系和<code>has-a</code>关系</p>
+<p> <code>is-a</code>:代表一种继承关系，是一种单向链式关系</p>
+<p> <code>has-a</code>:代表包含关系</p>
+</li>
+<li><p>在子类中打算引用父类的方法然后再加上额外的行为</p>
+ <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">roam</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.roam();</span><br><span class="line">    <span class="comment">// my own roam stuff</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 使用<code>super</code>这个关键词取用父类，这样先执行父类的roam(),然后再执行自定义的行为。<code>super</code>类比于C++里的<code>::</code>。</p>
+<p> 相对<code>super</code>,<code>this</code>指向自己的引用。</p>
+</li>
+<li><p>多态</p>
+</li>
+</ol>
+<ul>
+<li>引用类型可以是实际对象的父类</li>
+<li>参数和返回类型也可以多态，比如当参数声明为父类类型时，可以传进子类对象，执行子类的方法。</li>
+</ul>
+<ol start="5">
+<li><p>是否有私有类</p>
+<p> 除了内部类并没有私有类这个概念，但有三个方法能够限制被继承。</p>
+<ul>
+<li><p>存取控制</p>
+<p>标记为非公有，非公有的类只能被同一个package里的类继承</p>
+</li>
+<li><p>使用<code>final</code>修饰符，代表该类是继承树末端，无法被继承</p>
+</li>
+<li><p>让该类只拥有<code>private</code>的构造程序</p>
+</li>
+</ul>
+</li>
+<li><p>关于<code>final</code></p>
+<p> 如果想要防止某个方法被覆盖，可以用<code>final</code>修饰该方法。将类标识成<code>final</code>的话意味着没有任何方法能够被覆盖。</p>
+</li>
+<li><p>覆盖的规则</p>
+<ul>
+<li>覆盖父类方法时，参数要一致，返回类型要兼容。</li>
+<li>存取权限不能变小，只能相同或者更开放。</li>
+</ul>
+</li>
+<li><p>方法的重载overload</p>
+<p> 方法名相同，参数不同</p>
+<ul>
+<li>必须更改参数类型。</li>
+<li>可以更改返回类型，但要符合返回类型是父类返回子类的要求。</li>
+<li>重载的方法存取权限可以任意设定。</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>技术笔记</tag>
+        <tag>Head First Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Head First Java 第九章学习笔记</title>
+    <url>/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%B9%9D%E7%AB%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h3 id="构造器与垃圾收集器"><a href="#构造器与垃圾收集器" class="headerlink" title="构造器与垃圾收集器"></a>构造器与垃圾收集器</h3><ol>
+<li><p>堆与栈<br> JVM启动时会从底层操作系统取得一块内存并以此区段执行Java程序，一般关注两种内存区域：</p>
+<ul>
+<li>堆<code>heap</code>：对象的生存空间</li>
+<li>栈<code>stack</code>:方法调用和局部变量的生存空间<span id="more"></span></li>
+</ul>
+<p> 区别1：</p>
+<ul>
+<li>实例变量：声明在类里，存在于对象所属的堆空间上</li>
+<li>局部变量：局部变量和方法参数都声明在方法里，存在于栈上相对应的堆栈块中( in the frame corresponding to the method where the variables are declared.)，他们的生命周期只存在于方法存在栈上的那段时间</li>
+</ul>
+<p> <strong><big>区别2</big></strong>:</p>
+<ul>
+<li>对象本身：无论如何都存在于堆里</li>
+<li>对象的引用：非<code>primitive</code>的变量只是保存对象的引用(<code>primitive</code>主数据类型变量也还是存放于栈)，存放在哪里还是看变量是哪里声明的。<ol>
+<li>如果对象引用变量是声明在方法里的局部变量，该变量还是会存在于栈里。</li>
+<li>如果对象引用变量是对象里的实例变量，那么存在于堆里。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>调用一个方法时，该方法就会放到调用栈的栈顶，一直待到被执行完毕，如果方法内调用了别的方法，那么被调用的方法就会放到栈顶执行完毕后调用它的方法再回到栈顶。</p>
+</li>
+<li><p>对象在堆上所占空间：存放该对象所有实例变量的空间</p>
+<ul>
+<li>primitive主数据类型：根据类型分配空间</li>
+<li>声明了一个对象引用变量但是没有赋值：只留下引用变量所用空间</li>
+<li>声明了一个对象引用变量并赋值：引用变量所占空间+新建的对象所占空间</li>
+</ul>
+</li>
+<li><p>构造函数：让你有机会介入<code>new</code>的过程。构造函数，没有显示的指定返回值类型，构造函数不会被继承。如果一个类，没有显示地编写构造器函数，Java 编译器会默认地为该类添加一个没有参数的构造器函数。反之， Java 编译器则不会再添加任何默认的构造函数。</p>
+</li>
+<li><p>构造器函数重载</p>
+<p> 即一个类，有多个构造器函数，且它们的参数都不能相同，包括参数顺序不同、或者参数类型不同、或者参数个数不同。重载的构造器，代表了该类在创建对象时可以有多种不同的方式。</p>
+</li>
+<li><p>实例变量有默认值，0/0.0/false,引用默认为null</p>
+</li>
+<li><p>构造函数可以设为私有，代表该类以外不能存取，之后详细讨论</p>
+</li>
+<li><p>抽象类也有构造函数，虽然抽象类不能new，但是可以用于继承</p>
+</li>
+<li><p>构造函数链</p>
+<p> <strong>构造函数执行的第一件事是去执行其父类构造函数</strong>，层层执行，连锁反应到执行Object的构造函数为止。</p>
+<ul>
+<li>如何调用父类构造函数    <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span>&#123;&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Duck</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Duck</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">super</span>();</span><br><span class="line">        <span class="comment">//Duck&#x27;s own methods</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>没有调用<code>super()</code>的情况：编译器会自动加上<code>super()</code><ul>
+<li>没有编写构造函数<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">className</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">super</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>编写了构造函数但是没有调用<code>super()</code><br>编译器会在每个重载版本的构造函数里加上<code>super()</code>,<strong>并且<code>super()</code>一定是构造函数的第一个语句</strong></li>
+</ul>
+编译器自动添加的一定是没有参数的版本，即使父类构造函数有重载，也一定调用的是无参数版本。</li>
+</ul>
+</li>
+<li><p>构造器中使用<code>this()</code>调用重载的构造器</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> id;</span><br><span class="line">    String name;</span><br><span class="line">    String gender;</span><br><span class="line">    <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 注意重载构造函数之间的调用关系</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(<span class="keyword">int</span> id,String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>(id, name, <span class="keyword">null</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(<span class="keyword">int</span> id,String name,String gender)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//重载的构造方法之间调用</span></span><br><span class="line">        <span class="keyword">this</span>(id,name,gender,<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Student</span><span class="params">(<span class="keyword">int</span> id,String name,String gender,<span class="keyword">int</span> age)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.id = id;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.gender = gender;</span><br><span class="line">        <span class="keyword">this</span>.age = age;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> id+<span class="string">&quot;, &quot;</span>+name+<span class="string">&quot;, &quot;</span>+gender+<span class="string">&quot;, &quot;</span>+age;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>this()</code>用法</p>
+<ul>
+<li>构造方法之间调用，减少重复代码</li>
+<li><code>this()</code>必须放在首行</li>
+<li>一般是参数少的方法调用参数多的方法</li>
+</ul>
+</li>
+<li><p>对象的生命周期</p>
+<p>对象的生命周期取决于引用它的引用变量，当它的引用变量消失后对象就变成可回收得了。</p>
+<p>实例变量存活在对象中，生命周期与对象一致。</p>
+</li>
+<li><p><code>life</code>和<code>scope</code>的区别</p>
+</li>
+</ol>
+<ul>
+<li>life：局部变量存活到方法执行完毕</li>
+<li>scope：作用域，局部变量的范围只局限于声明它的方法之内，当该方法调用别的方法时，局部变量虽然或者但是不在当前范围内</li>
+</ul>
+<ol start="13">
+<li>释放对象引用的三种情况<ul>
+<li>引用永久性地离开它的范围，比如方法内声明赋值的对象引用</li>
+<li>引用被赋值到其它对象上，一开始引用的对象最后就会被回收</li>
+<li>直接将引用设为null</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>技术笔记</tag>
+        <tag>Head First Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Head First Java 第五章学习笔记</title>
     <url>/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%BA%94%E7%AB%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h3 id="编写程序"><a href="#编写程序" class="headerlink" title="编写程序"></a>编写程序</h3><ol>
@@ -35,6 +191,84 @@
 <li><p><code>i++</code>vs<code>++i</code></p>
 <p> <code>i++</code>:先运用变量的值再执行加减操作</p>
 <p> <code>++i</code>:先执行加减操作再运用变量的值</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>技术笔记</tag>
+        <tag>Head First Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Head First Java 第八章学习笔记</title>
+    <url>/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E5%85%AB%E7%AB%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h3 id="接口与抽象类"><a href="#接口与抽象类" class="headerlink" title="接口与抽象类"></a>接口与抽象类</h3><p>1.<strong>抽象类</strong>：有些类不想要被初始化，也就是不想要被<code>new</code>出来，那么就标记这个类为<strong>抽象类</strong>，编译器就能知道这个类不能创建任何类型的实例。</p>
+<span id="more"></span>
+
+<ul>
+<li><p>格式</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Canine</span> <span class="keyword">extends</span> <span class="title">Animals</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">roam</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">makeCanine</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">go</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Canine c;</span><br><span class="line">        c=<span class="keyword">new</span> Dog();  <span class="comment">// Yes! 赋值子类对象给父类引用</span></span><br><span class="line">        c=<span class="keyword">new</span> Canine();  <span class="comment">// No!!!抽象类！</span></span><br><span class="line">        c.roam();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>设计好继承结构之后，决定哪些类是抽象的，哪些是具体的，具体的类是可以被初始化为对象的。</p>
+</li>
+<li><p>抽象类不可以<code>new</code>一个对象，但是可以保存一个数组对象（给子类）。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> Animal[] animals = <span class="keyword">new</span> Animal[<span class="number">5</span>];</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="2">
+<li><p>在使用多态时，要注意对象多种类型之间的差异。</p>
+ <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Dog dog1 = <span class="keyword">new</span> Dog();</span><br><span class="line">Animal dog2 = <span class="keyword">new</span> Dog();</span><br><span class="line">Object dog3 = <span class="keyword">new</span> Dog();</span><br></pre></td></tr></table></figure>
+<p> 注意这三个dog对象的区别:</p>
+<ul>
+<li>dog1拥有  Dog / Animal / Object 中所有的⽅法。</li>
+<li>dog2拥有Animal /<br>Object中的⽅法，不能调⽤Dog类特有的⽅法。</li>
+<li>dog3只拥有 Object  中的⽅法，不能调⽤  Animal / Dog</li>
+</ul>
+<p> 类中的⽅法。这就是在使⽤多态过程中，需要特别注意的问题。</p>
+</li>
+<li><p>引用类型转换</p>
+</li>
+</ol>
+<ul>
+<li>大类型转小类型<br>上面例子里的dog2 and dog3是可以转换成dog类型的  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(dog2 <span class="keyword">instanceof</span> Dog)&#123;</span><br><span class="line">    Dog dog4 = (dog) dog2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+先用<code>instanceof</code>判断</li>
+<li>小类型转大类型<br>没有什么问题直接转<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Animal dog5 = dog1;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="4">
+<li><p><code>Object</code>是所有对象的父类，<code>Object</code>不是抽象类</p>
+<p> 一些方法，不加<code>final</code>的可以覆盖</p>
+<ul>
+<li>equals()</li>
+<li>hashCode()</li>
+<li>toString()</li>
+<li>getClass()</li>
+</ul>
+</li>
+<li><p>Java不支持多重继承，可能会出现致命方块问题</p>
+</li>
+<li><p>接口</p>
+<p> 部分类需要具体实现某些方法，如果定义在父类里作为抽象方法，那么不需要执行这个方法的子类也要具体实现这个抽象方法造成浪费，所以最好就是创造出类似于多重继承的关系，但是Java是不支持多重继承的，所以有接口这个概念。</p>
+<ul>
+<li><p>接口的应用场景：</p>
+<ul>
+<li>在当前类族中，需要实现某些子类不需要的方法</li>
+<li>不同类族的多个类需要实现相同的方法</li>
+</ul>
+</li>
+<li><p>接口是100%的纯抽象类，接口里的所有方法都是抽象的需要实现。</p>
+</li>
+<li><p>接口的声明</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Pet</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>接口的实现</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span> <span class="keyword">implements</span> <span class="title">Pet</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>接口里的方法必然是<code>public</code> and <code>abstract</code>,可以省略<code>abstract</code></p>
+</li>
+<li><p>不同继承树的类可以实现相同的接口，这也是接口应用场景之一</p>
+</li>
+<li><p>一个类可以使用多个接口</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span> <span class="keyword">implements</span> <span class="title">Pet</span>,<span class="title">Saveable</span>,<span class="title">paintable</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
 </li>
 </ol>
 ]]></content>
@@ -105,6 +339,204 @@
       <tags>
         <tag>技术笔记</tag>
         <tag>Head First Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Head First Java 第六章学习笔记</title>
+    <url>/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E5%85%AD%E7%AB%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h3 id="使用Java函数库"><a href="#使用Java函数库" class="headerlink" title="使用Java函数库"></a>使用Java函数库</h3><ol>
+<li>ArrayList初识<span id="more"></span>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 创建</span></span><br><span class="line">ArrayList&lt;Egg&gt; myList = <span class="keyword">new</span> ArrayList&lt;Egg&gt;();</span><br><span class="line"><span class="comment">// 增</span></span><br><span class="line">Egg s = <span class="keyword">new</span> Egg();</span><br><span class="line">Egg b = <span class="keyword">new</span> Egg();</span><br><span class="line">myList.add(s);</span><br><span class="line">myList.add(b);</span><br><span class="line"><span class="comment">// 另一种增加元素写法</span></span><br><span class="line">ArrayList&lt;Integer&gt; lst = <span class="keyword">new</span> ArrayList&lt;Integer&gt;()&#123;</span><br><span class="line">          &#123;</span><br><span class="line">              add(<span class="number">1</span>);</span><br><span class="line">              add(<span class="number">2</span>);</span><br><span class="line">              add(<span class="number">3</span>);</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;;</span><br><span class="line"><span class="comment">// 查询大小</span></span><br><span class="line"><span class="keyword">int</span> theSize = myList.size();</span><br><span class="line"><span class="comment">// 查询特定元素</span></span><br><span class="line"><span class="keyword">boolean</span> isIn = myList.contains(s);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 查询特定元素位置,返回-1代表没有</span></span><br><span class="line"><span class="keyword">int</span> idx = myList.indexOf(b);</span><br><span class="line"><span class="comment">// 判断集合是否为空</span></span><br><span class="line"><span class="keyword">boolean</span> isEpt = myList.isEmpty();</span><br><span class="line"><span class="comment">// 删除元素</span></span><br><span class="line">myList.remove(s);  <span class="comment">//删除成功的话返回true</span></span><br><span class="line">myList.remove(<span class="number">0</span>);  <span class="comment">//返回删除的元素</span></span><br><span class="line"><span class="comment">//可以是索引可以是对象，如果元素类型是int删除元素的话需要把int转为Object</span></span><br><span class="line">integers.remove(Integer.valueOf(<span class="number">2</span>));</span><br></pre></td></tr></table></figure></li>
+</ol>
+<ul>
+<li>遍历ArrayList的四种方法<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">  ArrayList&lt;String&gt; aList = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">  aList.add(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">  aList.add(<span class="string">&quot;b&quot;</span>);</span><br><span class="line">  aList.add(<span class="string">&quot;c&quot;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="comment">//方法1</span></span><br><span class="line">  Iterator it1 = aList.iterator();</span><br><span class="line">  <span class="keyword">while</span>(it1.hasNext())&#123;</span><br><span class="line">    System.out.println(it1.next());</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//方法2</span></span><br><span class="line">  <span class="keyword">for</span> (Iterator it2 = aList.iterator();it2.hasNext();)&#123;</span><br><span class="line">    System.out.println(it2.next());</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">//方法3</span></span><br><span class="line">  <span class="keyword">for</span>(String tmp:aList )&#123;&#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">//方法4</span></span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>;i &lt; list.size(); i ++)&#123;</span><br><span class="line">        System.out.println(aList.get(i));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="2">
+<li>读取字符输入流</li>
+</ol>
+<ul>
+<li><code>Reader</code>是字符输入流的抽象基类<ul>
+<li><code>Read()</code>读取单个字符返回<code>int</code>,需要转成<code>char</code>，到达流的末尾时返回-1。</li>
+<li><code>read(char[] cbuf)</code></li>
+<li><code>close()</code></li>
+</ul>
+</li>
+<li><code>InputStreamReader</code>是字节流与字符流之间的桥梁，能将字节流输出为字符流，并且能为字节流指定字符集，可输出一个个的字符</li>
+<li><code>FileReader</code>把<code>FileInputStream</code>中的字节流根据字符编码方式转成字符流。</li>
+<li><code>BufferedReader</code>可以把字符输入流进行封装，将数据进行缓冲，提高读取效率。<ul>
+<li><code>readLine</code>读取一个文本行， 从字符输入流中读取文本，缓冲各个字符，从而提供字符、数组和行的高效读取。到达流末尾返回null</li>
+</ul>
+</li>
+</ul>
+<p>  <strong>读取控制台输入字符</strong><br>  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">BufferedReader is = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));</span><br></pre></td></tr></table></figure></p>
+<ol start="3">
+<li><strong>短运算符</strong></li>
+</ol>
+<ul>
+<li><p><code>&amp;&amp;</code>与</p>
+</li>
+<li><p><code>||</code></p>
+</li>
+<li><p><code>!=</code></p>
+</li>
+<li><p><code>!</code></p>
+<p><strong>长运算符</strong></p>
+</li>
+<li><p><code>&amp;</code></p>
+</li>
+<li><p><code>|</code></p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>技术笔记</tag>
+        <tag>Head First Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Java零碎知识点记录01</title>
+    <url>/2021/03/05/Java%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B9%E8%AE%B0%E5%BD%9501/</url>
+    <content><![CDATA[<p>不成体系的知识点记录</p>
+<ol>
+<li><p>一个.java文件里可以有多个class嘛？<br> 一个.java里面可以有几个class，但是只能有一个public class，且public class的名称必须与.java同名。</p>
+<span id="more"></span></li>
+<li><p>源文件javac出多个class文件出来!是怎么回事？</p>
+<ul>
+<li><p>1</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<p>这里每个class都是一个.class文件</p>
+</li>
+<li><p>2</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这会产生两个 class 文件，一个 <code>A.class</code>,一个<code> A$B.class</code></p>
+</li>
+<li><p>3 使用匿名类</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">xxx</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        button.addActionLisener(<span class="keyword">new</span> ActionListener() &#123;...&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这也会产生多个 class，一个 A.class，一个 A$1.class</p>
+</li>
+</ul>
+<p> <a href="https://blog.csdn.net/u012860938/article/details/38896229?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.control">参考文献</a></p>
+</li>
+<li><p>如何获取Java类中的变量名的字串<br><a href="https://blog.csdn.net/akalius/article/details/83207189?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3.control">参考</a></p>
+</li>
+<li><p>Java字符串可以引用传递吗？<br>结论：Java 字符串不是引用传递而是值传递；更进一步的说，Java 只有值传递，没有引用传递。<br><a href="https://article.itxueyuan.com/Da6vE0">参考</a></p>
+</li>
+<li><p>Java注释</p>
+</li>
+</ol>
+<ul>
+<li><p>单行注释 <code>//</code></p>
+<p>  快捷键：<code>Ctrl + /</code></p>
+</li>
+<li><p>多行注释</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">*注释</span></span><br><span class="line"><span class="comment">*注释2</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<p>  快捷键：<code>Ctrl+Shift+/</code></p>
+</li>
+<li><p>文档注释</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* </span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p>输入<code>/**</code>后<code>Enter</code></p>
+</li>
+</ul>
+<ol start="6">
+<li>HashMap有点像python里的字典，是<code>key:value</code>的映射，<code>key</code>和<code>value</code>的类型可以不相同，HashMap是无序的。</li>
+</ol>
+<ul>
+<li>新增<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="comment">//声明并添加</span></span><br><span class="line"><span class="comment">//Java9之后才能支持</span></span><br><span class="line"><span class="comment">//报错</span></span><br><span class="line">HashMap&lt;Integer,String&gt; map = Map.of(<span class="number">1</span>,<span class="string">&quot;apple&quot;</span>,<span class="number">2</span>,<span class="string">&quot;pear&quot;</span>);</span><br><span class="line"><span class="comment">// 加入元素</span></span><br><span class="line">HashMap&lt;Integer,String&gt; Sites = <span class="keyword">new</span> HashMap&lt;Integer,String&gt;();</span><br><span class="line">Sites.put(<span class="number">1</span>, <span class="string">&quot;Google&quot;</span>);</span><br><span class="line">Sites.put(<span class="number">2</span>, <span class="string">&quot;Runoob&quot;</span>);</span><br><span class="line">Sites.put(<span class="number">3</span>, <span class="string">&quot;Taobao&quot;</span>);</span><br><span class="line">Sites.put(<span class="number">4</span>, <span class="string">&quot;Zhihu&quot;</span>);</span><br></pre></td></tr></table></figure></li>
+<li>查<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//根据key查找value</span></span><br><span class="line">System.out.println(Sites.get(<span class="number">3</span>)); <span class="comment">// Taobao</span></span><br><span class="line"><span class="comment">//查找是否包含所要查询的key or value，返回true/false</span></span><br><span class="line">System.out.println(Sites.containsKey(<span class="number">2</span>));  <span class="comment">//true</span></span><br><span class="line">System.out.println(Sites.containsValue(<span class="string">&quot;a&quot;</span>)); <span class="comment">//false</span></span><br></pre></td></tr></table></figure></li>
+<li>删<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 删除单个元素</span></span><br><span class="line">Sites.remove(<span class="number">4</span>);</span><br><span class="line"><span class="comment">// 删除所有</span></span><br><span class="line">Sites.clear();</span><br></pre></td></tr></table></figure></li>
+<li>迭代<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//根据keySet()</span></span><br><span class="line"><span class="keyword">for</span>(Integer ikey:Sites.keySet())&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;key:&quot;</span>+ikey+<span class="string">&quot;value:&quot;</span>+Sites.get(ikey))；</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (String val:Sites.values())&#123;</span><br><span class="line">    System.out.println(val);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="7">
+<li><p><code>toLowerCase() </code>转换为小写字符串</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">str.toLowerCase();</span><br></pre></td></tr></table></figure></li>
+<li><p><code>print</code>vs<code>println</code>vs<code>printf</code></p>
+</li>
+</ol>
+<ul>
+<li><p>println(“test”)相当于print(“test\n”)</p>
+</li>
+<li><p><code>printf</code>是格式化输出的形式，可以用于一行输出多个变量。</p>
+<table>
+<thead>
+<tr>
+<th align="center">占位符</th>
+<th align="center">代表的类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">%c</td>
+<td align="center">单个字符</td>
+</tr>
+<tr>
+<td align="center">%d</td>
+<td align="center">十进制整数</td>
+</tr>
+<tr>
+<td align="center">%f</td>
+<td align="center">十进制浮点</td>
+</tr>
+<tr>
+<td align="center">%s</td>
+<td align="center">字符串</td>
+</tr>
+<tr>
+<td align="center">%u</td>
+<td align="center">无符号的十进制数</td>
+</tr>
+<tr>
+<td align="center">%o</td>
+<td align="center">八进制数</td>
+</tr>
+<tr>
+<td align="center">%x</td>
+<td align="center">十六进制数</td>
+</tr>
+<tr>
+<td align="center">%%</td>
+<td align="center">输出百分号</td>
+</tr>
+</tbody></table>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">System.out.printf(<span class="string">&quot;%d,%d&quot;</span>,a,b);    <span class="comment">//通过占位符，打印多个变量</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="9">
+<li><p><code>hashCode()</code>和<code>equal()</code>的区别与联系</p>
+<p> <a href="https://blog.csdn.net/fenglibing/article/details/8905007">hashCode()详解</a></p>
+<ul>
+<li><code>hashCode</code>是用来在散列存储结构中确定对象的存储地址</li>
+<li>如果两个对象相同，就是适用于<code>equals(java.lang.Object)</code> 方法，那么这两个对象的<code>hashCode</code>一定要相同；</li>
+<li>如果对象的<code>equals</code>方法被重写，那么对象的<code>hashCode</code>也尽量重写，并且产生<code>hashCode</code>使用的对象，一定要和<code>equals</code>方法中使用的一致，否则就会违反上面提到的第2点；</li>
+<li>两个对象的<code>hashCode</code>相同，并不一定表示两个对象就相同，也就是不一定适用于equals(java.lang.Object) 方法，只能够说明这两个对象在散列存储结构中，如Hashtable，他们<strong>存放在同一个篮子里</strong>。</li>
+</ul>
+<p> 回顾：<code>==</code>与<code>equals()</code></p>
+</li>
+<li><p><code>HashSet</code>相关</p>
+<p>set里元素无序不允许重复</p>
+<ul>
+<li><code>HashSet</code>底层数据结构是哈希表</li>
+<li><code>HashSet</code>如何保证元素唯一性<br>  通过<code>hashCode()</code>、<code>equals()</code>两个方法判断<ul>
+<li>元素hashcode相同，则判断equals()是否为true</li>
+<li>元素hashcode不同，则不用调用equals()</li>
+</ul>
+</li>
+</ul>
+<p>上个item里重写了<code>hashCode()</code>和<code>equals()</code>方法后，两个实例并不相同但是改写后是两个true所以<code>HashSet</code>认为是同一个元素，当然这也就失去了意义。</p>
+</li>
+<li><p><code>instanceof()</code></p>
+<p><code>instanceof</code>是Java中的二元运算符，左边是<strong>对象</strong>，右边是<strong>类</strong>；当对象是右边类或子类所创建对象时，返回true；否则，返回false。</p>
+</li>
+<li><p><a href="https://www.jianshu.com/p/95f349258afb">泛型和泛型通配符</a></p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>技术笔记</tag>
       </tags>
   </entry>
   <entry>
@@ -207,6 +639,62 @@
       <tags>
         <tag>技术笔记</tag>
         <tag>Head First Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python零碎知识点记录01</title>
+    <url>/2021/03/05/Python%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B901/</url>
+    <content><![CDATA[<p>这个记录并不成体系，只是随手记录的知识点做个归档，积攒一部分后就继续补充  </p>
+<ol>
+<li><p>取整</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a=<span class="number">3.14</span></span><br><span class="line"><span class="built_in">int</span>(a)  <span class="comment"># 向下取整 3</span></span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line">math.ceil(a)  <span class="comment"># 向上取整 4</span></span><br><span class="line"><span class="built_in">round</span>(a)  <span class="comment"># 四舍五入</span></span><br><span class="line">math.modf(a) <span class="comment"># (0.14,3.0) 分别取小数和整数部分，返回元组</span></span><br><span class="line">math.modf(<span class="number">4.2</span>)  </span><br><span class="line"><span class="comment"># (0.20000000000000018, 4.0)</span></span><br><span class="line"><span class="comment"># 按理说应该返回 (0.2, 4.0) 才对。这里涉及到了另一个问题，即浮点数在计算机中的表示，在计算机中是无法精确的表示小数的，至少目前的计算机做不到这一点。上例中最后的输出结果只是 0.2 在计算中的近似表示。Python 和 C 一样, 采用 IEEE 754 规范来存储浮点数。</span></span><br></pre></td></tr></table></figure>
+<span id="more"></span></li>
+<li><p>多个list创建dataframe</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">msc = pd.DataFrame(fileNames, columns = [<span class="string">&#x27;filename&#x27;</span>])</span><br><span class="line">msc[<span class="string">&#x27;title&#x27;</span>] = mtitle</span><br><span class="line">msc[<span class="string">&#x27;artist&#x27;</span>] = martist</span><br><span class="line">msc[<span class="string">&#x27;size&#x27;</span>] = msize</span><br><span class="line">msc[<span class="string">&#x27;format&#x27;</span>] = mformat</span><br></pre></td></tr></table></figure></li>
+<li><p>dataframe打印不完整的问题</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 显示所有列</span></span><br><span class="line">pd.set_option(<span class="string">&#x27;display.max_columns&#x27;</span>, <span class="literal">None</span>)</span><br><span class="line"><span class="comment"># 显示所有行</span></span><br><span class="line">pd.set_option(<span class="string">&#x27;display.max_rows&#x27;</span>, <span class="literal">None</span>)</span><br><span class="line"><span class="comment"># 设置value的显示长度为100，默认为50</span></span><br><span class="line">pd.set_option(<span class="string">&#x27;max_colwidth&#x27;</span>, <span class="number">100</span>)</span><br></pre></td></tr></table></figure></li>
+<li><p>字符串大小写转换和检测</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">str1=<span class="string">&#x27;www.bing.com&#x27;</span></span><br><span class="line">str2=<span class="string">&#x27;i love mcs&#x27;</span></span><br><span class="line">str1.title()  <span class="comment"># Www.Bing.Com</span></span><br><span class="line">str2.title()  <span class="comment"># I Love Mcs</span></span><br><span class="line"><span class="comment"># title() 方法用于将字符串中每个单词的首字母转为大写，其他字母全部转为小写，转换完成后，此方法会返回转换得到的字符串。如果字符串中没有需要被转换的字符，此方法会将字符串原封不动地返回。</span></span><br><span class="line">str1.lower()  <span class="comment"># lower() 方法用于将字符串中的所有大写字母转换为小写字母，转换完成后，该方法会返回新得到的字符串。如果字符串中原本就都是小写字母，则该方法会返回原字符串。</span></span><br><span class="line">str1.upper()  <span class="comment"># upper()方法将字符串中的所有小写字母转换为大写字母，和以上两种方法的返回方式相同，即如果转换成功，则返回新字符串；反之，则返回原字符串。</span></span><br><span class="line">str1[<span class="number">0</span>].isupper()  <span class="comment">#false 是否大写</span></span><br><span class="line">str1[<span class="number">0</span>].islower()  <span class="comment">#true是否小写</span></span><br></pre></td></tr></table></figure>
+
+<p> 参考：<a href="https://www.jianshu.com/p/79e7b17cd831">https://www.jianshu.com/p/79e7b17cd831</a></p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">detectCapitalUse</span>(<span class="params">self, word: <span class="built_in">str</span></span>) -&gt; bool:</span></span><br><span class="line">        </span><br><span class="line">        is_upper = [c.isupper() <span class="keyword">for</span> c <span class="keyword">in</span> word]   <span class="comment"># 大写字符判别列表</span></span><br><span class="line">        is_lower = [c.islower() <span class="keyword">for</span> c <span class="keyword">in</span> word]   <span class="comment"># 小写字符判别列表</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">all</span>(is_upper) <span class="keyword">or</span> <span class="built_in">all</span>(is_lower):              </span><br><span class="line">        <span class="comment"># 如果所有字符都是大写或小写</span></span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span>                         </span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="built_in">any</span>(is_upper):                               <span class="comment"># 如果既有大写又有小写</span></span><br><span class="line">            <span class="keyword">return</span> is_upper[<span class="number">0</span>] <span class="keyword">and</span> <span class="built_in">all</span>(is_lower[<span class="number">1</span>:])    <span class="comment"># 要求第一个大写其他都小写</span></span><br></pre></td></tr></table></figure>
+<p> 使用<code>any()</code>函数判断列表中是否有一个元素的布尔值为<code>True</code>，使用<code>all()</code>函数判断列表中是否所有元素的布尔值均为<code>True</code>。</p>
+</li>
+<li><p>dataframe导出excel</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">writer = pd.ExcelWriter(<span class="string">&#x27;output.xlsx&#x27;</span>)</span><br><span class="line">info_marks.to_excel(writer)</span><br><span class="line">writer.save()</span><br><span class="line">print(<span class="string">&#x27;DataFrame is written successfully to the Excel File.&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
+<li><p>dataframe索引</p>
+</li>
+<li><p>判断nonetype<br><code>is None</code></p>
+</li>
+<li><p>lambda函数</p>
+</li>
+<li><p>dataframe大小</p>
+ <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">len</span>(df) 	<span class="comment"># 获取行数</span></span><br><span class="line"><span class="built_in">len</span>(df.columns) 	<span class="comment"># 获取列数</span></span><br><span class="line">df.shape 	<span class="comment"># 获取行数和列数</span></span><br><span class="line">df.size 	<span class="comment"># 得到元素个数</span></span><br></pre></td></tr></table></figure></li>
+<li><p>dataframe删除列<br>df.drop()</p>
+</li>
+<li><p>split()和rsplit()</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用split：</span></span><br><span class="line">path = <span class="string">&#x27;www.chengxuan.com/subactivity/1033/page/1&#x27;</span> </span><br><span class="line">path.split(<span class="string">&quot;/&quot;</span>)</span><br><span class="line">[<span class="string">&quot;www.chengxuan.com&quot;</span>, <span class="string">&quot;subactivity&quot;</span>, <span class="number">1033</span>, <span class="string">&quot;page&quot;</span>, <span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用rsplit：</span></span><br><span class="line">path.rsplit(<span class="string">&quot;/&quot;</span>,<span class="number">1</span>)</span><br><span class="line">[<span class="string">&quot;www.chengxuan.com/subactivity/1033/page&quot;</span>,<span class="string">&quot;1&quot;</span>]</span><br></pre></td></tr></table></figure>
+<p>rsplit(“/“,1) 中的1，表示从字符串右端分割1次，2就是分割2次。</p>
+</li>
+<li><p>python 删除字符串中以\x开头的特殊字符</p>
+</li>
+<li><p>python判断字符是否是中文</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_Chinese</span>(<span class="params">word</span>):</span></span><br><span class="line">    <span class="keyword">for</span> ch <span class="keyword">in</span> word:</span><br><span class="line">        <span class="keyword">if</span> <span class="string">&#x27;\u4e00&#x27;</span> &lt;= ch &lt;= <span class="string">&#x27;\u9fff&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">print(is_Chinese(<span class="string">&quot;中文&quot;</span>))</span><br></pre></td></tr></table></figure></li>
+<li><p>使用split匹配多个分隔符</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">line = <span class="string">&#x27;ab/cd.123&#x27;</span></span><br><span class="line">print(line.split(<span class="string">&#x27;/&#x27;</span>))  <span class="comment"># [&#x27;ab&#x27;,&#x27;cd.123&#x27;]</span></span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line">print(re.split(<span class="string">&#x27;[/\.]&#x27;</span>,line))  <span class="comment"># [&#x27;ab&#x27;, &#x27;cd&#x27;, &#x27;123&#x27;]</span></span><br></pre></td></tr></table></figure></li>
+<li><p>判断字符串是否全部是中文</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#检验是否全是中文字符</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_all_chinese</span>(<span class="params">strs</span>):</span></span><br><span class="line">    <span class="keyword">for</span> _char <span class="keyword">in</span> strs:</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> <span class="string">&#x27;\u4e00&#x27;</span> &lt;= _char &lt;= <span class="string">&#x27;\u9fa5&#x27;</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">False</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">True</span></span><br></pre></td></tr></table></figure></li>
+<li><p>字符串截取</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="built_in">str</span> = <span class="string">&#x27;0123456789&#x27;</span></span><br><span class="line">print(<span class="string">&quot;str[0:3]：&quot;</span>+<span class="built_in">str</span>[<span class="number">0</span>:<span class="number">3</span>])  <span class="comment"># 正向截取字符串 0~3（不包含3）   即 012</span></span><br><span class="line">print(<span class="string">&quot;str[:]:&quot;</span>+<span class="built_in">str</span>[:])  <span class="comment"># 正向输出所有字符串    即0123456789</span></span><br><span class="line">print(<span class="string">&quot;str[6:]：&quot;</span>+<span class="built_in">str</span>[<span class="number">6</span>:]) <span class="comment"># 正向输出字符串 从 5 （不含5）~  结束  即 6789</span></span><br><span class="line">print(<span class="string">&quot;str[:-3]：&quot;</span>+<span class="built_in">str</span>[:-<span class="number">3</span>]) <span class="comment"># 正向输出  从开始 ~ 倒数第第3个字符（不含第3个）即 0123456</span></span><br><span class="line">print(<span class="string">&quot;str[2]：&quot;</span>+<span class="built_in">str</span>[<span class="number">2</span>]) <span class="comment">#输出第3个字符 即 2</span></span><br><span class="line">print(<span class="string">&quot;str[:-1]：&quot;</span>+<span class="built_in">str</span>[:-<span class="number">1</span>]) <span class="comment"># 正向输出  从开始 ~ 倒数第第1个字符（不含第1个）即 012345678</span></span><br><span class="line">print(<span class="string">&quot;str[-1]：&quot;</span>+<span class="built_in">str</span>[-<span class="number">1</span>]) <span class="comment"># 输出最后一个字符 即 9</span></span><br><span class="line">print(<span class="string">&quot;str[-3:-1]:&quot;</span>+<span class="built_in">str</span>[-<span class="number">3</span>:-<span class="number">1</span>]) <span class="comment">#逆序输出  从倒数第 3 ~ 倒数第 1 （不含） 即 78</span></span><br><span class="line">print(<span class="string">&quot;str[-3:]:&quot;</span>+<span class="built_in">str</span>[-<span class="number">3</span>:]) <span class="comment"># 逆序输出 从倒数第 3 ~ 最后 即 789</span></span><br><span class="line">print(<span class="string">&quot;str[::-1]：&quot;</span>+<span class="built_in">str</span>[::-<span class="number">1</span>]) <span class="comment"># 逆序输出,连续输出所有字符串  即  9876543210</span></span><br><span class="line">print(<span class="string">&quot;str[::-2]：&quot;</span>+<span class="built_in">str</span>[::-<span class="number">2</span>]) <span class="comment"># 逆序输出，从最后一个开始，每隔2个字符串输出一个  97531</span></span><br><span class="line">print(<span class="string">&quot;str[::1]：&quot;</span>+<span class="built_in">str</span>[::<span class="number">1</span>]) <span class="comment"># 正序输出， 连续输出所有字符串  即  0123456789</span></span><br><span class="line">print(<span class="string">&quot;str[::2]：&quot;</span>+<span class="built_in">str</span>[::<span class="number">2</span>]) <span class="comment"># 正序输出，从第一个开始，每隔2个字符串输出一个即 02468</span></span><br><span class="line">print(<span class="string">&quot;str[:-2:4]:&quot;</span>+<span class="built_in">str</span>[:-<span class="number">2</span>:<span class="number">4</span>])<span class="comment"># 正序输出 从第一个开始，每隔4个字符输出一个 即 04</span></span><br><span class="line">print(<span class="string">&quot;str[1:-2:4]:&quot;</span>+<span class="built_in">str</span>[<span class="number">1</span>:-<span class="number">2</span>:<span class="number">4</span>])<span class="comment"># 正序输出 从第二个开始，每隔4个字符输出一个 即 15</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>粗略总结：str[(idx1):(idx2)(:step)]<br>idx1:起始index,包含进去<br>idx2:截止index,不包含<br>step:步长，负数的话就是反向输出</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+      <tags>
+        <tag>技术笔记</tag>
       </tags>
   </entry>
 </search>

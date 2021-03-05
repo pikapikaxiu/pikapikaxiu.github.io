@@ -19,21 +19,21 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="第三章  primitive主数据类型和引用 变量有两种：primitive主数据类型、引用  primitive主数据类型保存基本类型的值  引用保存对象的引用">
+  <meta name="description" content="接口与抽象类1.抽象类：有些类不想要被初始化，也就是不想要被new出来，那么就标记这个类为抽象类，编译器就能知道这个类不能创建任何类型的实例。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Head First Java 第三章学习笔记">
-<meta property="og:url" content="http://example.com/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:title" content="Head First Java 第八章学习笔记">
+<meta property="og:url" content="http://example.com/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E5%85%AB%E7%AB%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="pikapika的学习记录">
-<meta property="og:description" content="第三章  primitive主数据类型和引用 变量有两种：primitive主数据类型、引用  primitive主数据类型保存基本类型的值  引用保存对象的引用">
+<meta property="og:description" content="接口与抽象类1.抽象类：有些类不想要被初始化，也就是不想要被new出来，那么就标记这个类为抽象类，编译器就能知道这个类不能创建任何类型的实例。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-03-05T09:21:28.000Z">
-<meta property="article:modified_time" content="2021-03-05T10:06:51.126Z">
+<meta property="article:modified_time" content="2021-03-05T10:21:12.002Z">
 <meta property="article:author" content="pikapikaxiu">
 <meta property="article:tag" content="技术笔记">
 <meta property="article:tag" content="Head First Java">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%AC%94%E8%AE%B0/">
+<link rel="canonical" href="http://example.com/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E5%85%AB%E7%AB%A0%E7%AC%94%E8%AE%B0/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>Head First Java 第三章学习笔记 | pikapika的学习记录</title>
+  <title>Head First Java 第八章学习笔记 | pikapika的学习记录</title>
   
 
 
@@ -194,7 +194,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E5%85%AB%E7%AB%A0%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/pikachu_pointer.png">
@@ -207,7 +207,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Head First Java 第三章学习笔记
+          Head First Java 第八章学习笔记
         </h1>
 
         <div class="post-meta">
@@ -218,7 +218,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-03-05 17:21:28 / Modified: 18:06:51" itemprop="dateCreated datePublished" datetime="2021-03-05T17:21:28+08:00">2021-03-05</time>
+              <time title="Created: 2021-03-05 17:21:28 / Modified: 18:21:12" itemprop="dateCreated datePublished" datetime="2021-03-05T17:21:28+08:00">2021-03-05</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -241,94 +241,70 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="第三章-primitive主数据类型和引用"><a href="#第三章-primitive主数据类型和引用" class="headerlink" title="第三章  primitive主数据类型和引用"></a>第三章  primitive主数据类型和引用</h2><ol>
-<li><p>变量有两种：<code>primitive主数据类型</code>、<code>引用</code></p>
+        <h3 id="接口与抽象类"><a href="#接口与抽象类" class="headerlink" title="接口与抽象类"></a>接口与抽象类</h3><p>1.<strong>抽象类</strong>：有些类不想要被初始化，也就是不想要被<code>new</code>出来，那么就标记这个类为<strong>抽象类</strong>，编译器就能知道这个类不能创建任何类型的实例。</p>
+<span id="more"></span>
+
 <ul>
-<li><p><code>primitive主数据类型</code><br>保存基本类型的值</p>
+<li><p>格式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Canine</span> <span class="keyword">extends</span> <span class="title">Animals</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">roam</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">makeCanine</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">go</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Canine c;</span><br><span class="line">        c=<span class="keyword">new</span> Dog();  <span class="comment">// Yes! 赋值子类对象给父类引用</span></span><br><span class="line">        c=<span class="keyword">new</span> Canine();  <span class="comment">// No!!!抽象类！</span></span><br><span class="line">        c.roam();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>设计好继承结构之后，决定哪些类是抽象的，哪些是具体的，具体的类是可以被初始化为对象的。</p>
 </li>
-<li><p><code>引用</code><br>保存对象的引用</p>
-<span id="more"></span></li>
+<li><p>抽象类不可以<code>new</code>一个对象，但是可以保存一个数组对象（给子类）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> Animal[] animals = <span class="keyword">new</span> Animal[<span class="number">5</span>];</span><br></pre></td></tr></table></figure></li>
 </ul>
-<table>
-<thead>
-<tr>
-<th align="center"></th>
-<th align="center">类型</th>
-<th align="center">位数</th>
-<th align="center">值域</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><code>boolean</code></td>
-<td align="center">boolean</td>
-<td align="center">JVM决定</td>
-<td align="center">True或False</td>
-</tr>
-<tr>
-<td align="center"><code>char</code></td>
-<td align="center">char</td>
-<td align="center">16bits</td>
-<td align="center">0~65535</td>
-</tr>
-<tr>
-<td align="center"><code>integer</code></td>
-<td align="center">byte</td>
-<td align="center">8bits</td>
-<td align="center">-128~127</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center">short</td>
-<td align="center">16bits</td>
-<td align="center">-2^15 ~ 2^15 -1</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center">int</td>
-<td align="center">32bits</td>
-<td align="center">-2^31 ~ 2^31-1</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center">long</td>
-<td align="center">64bits</td>
-<td align="center">-很大~+很大</td>
-</tr>
-<tr>
-<td align="center"><code>浮点型</code></td>
-<td align="center">float</td>
-<td align="center">32bits</td>
-<td align="center">范围规模可变</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center">doubale</td>
-<td align="center">64bits</td>
-<td align="center">范围规模可变</td>
-</tr>
-</tbody></table>
-<p> 小数默认为<code>double</code>,<code>float</code>标注为：float a = 3.14f;</p>
-</li>
-<li><p>primitive主数据类型赋值时要小心溢出</p>
-</li>
-<li><p>对象引用</p>
+<ol start="2">
+<li><p>在使用多态时，要注意对象多种类型之间的差异。</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Dog dog1 = <span class="keyword">new</span> Dog();</span><br><span class="line">Animal dog2 = <span class="keyword">new</span> Dog();</span><br><span class="line">Object dog3 = <span class="keyword">new</span> Dog();</span><br></pre></td></tr></table></figure>
+<p> 注意这三个dog对象的区别:</p>
 <ul>
-<li>没有对象变量，只有<strong>引用到对象的变量</strong>。</li>
-<li>对象引用变量保存的是存取变量的方法</li>
-<li><strong>对象引用变量</strong>并不是对象的容器，而是<strong>类似指向对象的指针，或者是地址</strong>。在Java中不知道也不必知道引用变量中实际装载的是什么，只有JVM才会知道如何使用引用来取得该对象。</li>
+<li>dog1拥有  Dog / Animal / Object 中所有的⽅法。</li>
+<li>dog2拥有Animal /<br>Object中的⽅法，不能调⽤Dog类特有的⽅法。</li>
+<li>dog3只拥有 Object  中的⽅法，不能调⽤  Animal / Dog</li>
 </ul>
+<p> 类中的⽅法。这就是在使⽤多态过程中，需要特别注意的问题。</p>
 </li>
-<li><p>对象声明、创建于赋值的3个步骤</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Dog myDog = <span class="keyword">new</span> Dog();</span><br></pre></td></tr></table></figure>
-<ol>
-<li>声明一个引用变量 <code>Dog myDog</code>：要求JVM分配空间给引用变量，此引用变量永远是Dog类型。但是myDog可以引用不同的Dog，除非被<code>final</code>修饰，那样只能引用固定的Dog不会再变。也可以引用到空指针。</li>
-<li>创建对象 <code>new Dog()</code>：要求JVM分配堆空间给新建的Dog对象。</li>
-<li>连接对象和引用 <code>=</code></li>
+<li><p>引用类型转换</p>
+</li>
 </ol>
+<ul>
+<li>大类型转小类型<br>上面例子里的dog2 and dog3是可以转换成dog类型的  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(dog2 <span class="keyword">instanceof</span> Dog)&#123;</span><br><span class="line">    Dog dog4 = (dog) dog2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+先用<code>instanceof</code>判断</li>
+<li>小类型转大类型<br>没有什么问题直接转<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Animal dog5 = dog1;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="4">
+<li><p><code>Object</code>是所有对象的父类，<code>Object</code>不是抽象类</p>
+<p> 一些方法，不加<code>final</code>的可以覆盖</p>
+<ul>
+<li>equals()</li>
+<li>hashCode()</li>
+<li>toString()</li>
+<li>getClass()</li>
+</ul>
 </li>
-<li><p>int数组</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] nums = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">7</span>];</span><br></pre></td></tr></table></figure>
-<p> 数组是对象，里面的元素是primitive主数据类型</p>
+<li><p>Java不支持多重继承，可能会出现致命方块问题</p>
+</li>
+<li><p>接口</p>
+<p> 部分类需要具体实现某些方法，如果定义在父类里作为抽象方法，那么不需要执行这个方法的子类也要具体实现这个抽象方法造成浪费，所以最好就是创造出类似于多重继承的关系，但是Java是不支持多重继承的，所以有接口这个概念。</p>
+<ul>
+<li><p>接口的应用场景：</p>
+<ul>
+<li>在当前类族中，需要实现某些子类不需要的方法</li>
+<li>不同类族的多个类需要实现相同的方法</li>
+</ul>
+</li>
+<li><p>接口是100%的纯抽象类，接口里的所有方法都是抽象的需要实现。</p>
+</li>
+<li><p>接口的声明</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Pet</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>接口的实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span> <span class="keyword">implements</span> <span class="title">Pet</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>接口里的方法必然是<code>public</code> and <code>abstract</code>,可以省略<code>abstract</code></p>
+</li>
+<li><p>不同继承树的类可以实现相同的接口，这也是接口应用场景之一</p>
+</li>
+<li><p>一个类可以使用多个接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span> <span class="keyword">implements</span> <span class="title">Pet</span>,<span class="title">Saveable</span>,<span class="title">paintable</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
 </li>
 </ol>
 
@@ -349,10 +325,13 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E5%85%AD%E7%AB%A0%E7%AC%94%E8%AE%B0/" rel="next" title="Head First Java 第六章学习笔记">
-      Head First Java 第六章学习笔记 <i class="fa fa-chevron-right"></i>
+    <a href="/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E5%9B%9B%E7%AB%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="Head First Java 第四章学习笔记">
+      <i class="fa fa-chevron-left"></i> Head First Java 第四章学习笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%BA%94%E7%AB%A0%E7%AC%94%E8%AE%B0/" rel="next" title="Head First Java 第五章学习笔记">
+      Head First Java 第五章学习笔记 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -412,7 +391,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-primitive%E4%B8%BB%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">第三章  primitive主数据类型和引用</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A5%E5%8F%A3%E4%B8%8E%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="nav-number">1.</span> <span class="nav-text">接口与抽象类</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

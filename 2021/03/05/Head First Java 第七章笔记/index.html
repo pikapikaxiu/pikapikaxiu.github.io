@@ -19,21 +19,21 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="第三章  primitive主数据类型和引用 变量有两种：primitive主数据类型、引用  primitive主数据类型保存基本类型的值  引用保存对象的引用">
+  <meta name="description" content="继承与多态 了解继承  子类继承父类的实例变量和方法，子类可以加入自己的实例变量和方法，还可以覆盖继承来的方法。  当调用对象引用的方法时，会调用到与该对象类型最接近的方法，也就是最低阶的会胜出。最低阶的意思就是在层次树的最下方，JVM会从下往上找直到找到为止。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Head First Java 第三章学习笔记">
-<meta property="og:url" content="http://example.com/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:title" content="Head First Java 第七章学习笔记">
+<meta property="og:url" content="http://example.com/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%B8%83%E7%AB%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="pikapika的学习记录">
-<meta property="og:description" content="第三章  primitive主数据类型和引用 变量有两种：primitive主数据类型、引用  primitive主数据类型保存基本类型的值  引用保存对象的引用">
+<meta property="og:description" content="继承与多态 了解继承  子类继承父类的实例变量和方法，子类可以加入自己的实例变量和方法，还可以覆盖继承来的方法。  当调用对象引用的方法时，会调用到与该对象类型最接近的方法，也就是最低阶的会胜出。最低阶的意思就是在层次树的最下方，JVM会从下往上找直到找到为止。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-03-05T09:21:28.000Z">
-<meta property="article:modified_time" content="2021-03-05T10:06:51.126Z">
+<meta property="article:modified_time" content="2021-03-05T10:20:30.733Z">
 <meta property="article:author" content="pikapikaxiu">
 <meta property="article:tag" content="技术笔记">
 <meta property="article:tag" content="Head First Java">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%AC%94%E8%AE%B0/">
+<link rel="canonical" href="http://example.com/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%B8%83%E7%AB%A0%E7%AC%94%E8%AE%B0/">
 
 
 <script id="page-configurations">
@@ -46,7 +46,7 @@
   };
 </script>
 
-  <title>Head First Java 第三章学习笔记 | pikapika的学习记录</title>
+  <title>Head First Java 第七章学习笔记 | pikapika的学习记录</title>
   
 
 
@@ -194,7 +194,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%B8%83%E7%AB%A0%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/pikachu_pointer.png">
@@ -207,7 +207,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Head First Java 第三章学习笔记
+          Head First Java 第七章学习笔记
         </h1>
 
         <div class="post-meta">
@@ -218,7 +218,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-03-05 17:21:28 / Modified: 18:06:51" itemprop="dateCreated datePublished" datetime="2021-03-05T17:21:28+08:00">2021-03-05</time>
+              <time title="Created: 2021-03-05 17:21:28 / Modified: 18:20:30" itemprop="dateCreated datePublished" datetime="2021-03-05T17:21:28+08:00">2021-03-05</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -241,94 +241,56 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="第三章-primitive主数据类型和引用"><a href="#第三章-primitive主数据类型和引用" class="headerlink" title="第三章  primitive主数据类型和引用"></a>第三章  primitive主数据类型和引用</h2><ol>
-<li><p>变量有两种：<code>primitive主数据类型</code>、<code>引用</code></p>
-<ul>
-<li><p><code>primitive主数据类型</code><br>保存基本类型的值</p>
-</li>
-<li><p><code>引用</code><br>保存对象的引用</p>
+        <h3 id="继承与多态"><a href="#继承与多态" class="headerlink" title="继承与多态"></a>继承与多态</h3><ol>
+<li><p>了解继承</p>
+<p> 子类继承父类的实例变量和方法，子类可以加入自己的实例变量和方法，还可以覆盖继承来的方法。</p>
+<p> 当调用对象引用的方法时，会调用到与该对象类型最接近的方法，也就是<strong>最低阶的会胜出</strong>。最低阶的意思就是在层次树的最下方，JVM会从下往上找直到找到为止。</p>
 <span id="more"></span></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th align="center"></th>
-<th align="center">类型</th>
-<th align="center">位数</th>
-<th align="center">值域</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><code>boolean</code></td>
-<td align="center">boolean</td>
-<td align="center">JVM决定</td>
-<td align="center">True或False</td>
-</tr>
-<tr>
-<td align="center"><code>char</code></td>
-<td align="center">char</td>
-<td align="center">16bits</td>
-<td align="center">0~65535</td>
-</tr>
-<tr>
-<td align="center"><code>integer</code></td>
-<td align="center">byte</td>
-<td align="center">8bits</td>
-<td align="center">-128~127</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center">short</td>
-<td align="center">16bits</td>
-<td align="center">-2^15 ~ 2^15 -1</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center">int</td>
-<td align="center">32bits</td>
-<td align="center">-2^31 ~ 2^31-1</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center">long</td>
-<td align="center">64bits</td>
-<td align="center">-很大~+很大</td>
-</tr>
-<tr>
-<td align="center"><code>浮点型</code></td>
-<td align="center">float</td>
-<td align="center">32bits</td>
-<td align="center">范围规模可变</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center">doubale</td>
-<td align="center">64bits</td>
-<td align="center">范围规模可变</td>
-</tr>
-</tbody></table>
-<p> 小数默认为<code>double</code>,<code>float</code>标注为：float a = 3.14f;</p>
+<li><p><code>is-a</code>关系和<code>has-a</code>关系</p>
+<p> <code>is-a</code>:代表一种继承关系，是一种单向链式关系</p>
+<p> <code>has-a</code>:代表包含关系</p>
 </li>
-<li><p>primitive主数据类型赋值时要小心溢出</p>
+<li><p>在子类中打算引用父类的方法然后再加上额外的行为</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">roam</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.roam();</span><br><span class="line">    <span class="comment">// my own roam stuff</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 使用<code>super</code>这个关键词取用父类，这样先执行父类的roam(),然后再执行自定义的行为。<code>super</code>类比于C++里的<code>::</code>。</p>
+<p> 相对<code>super</code>,<code>this</code>指向自己的引用。</p>
 </li>
-<li><p>对象引用</p>
-<ul>
-<li>没有对象变量，只有<strong>引用到对象的变量</strong>。</li>
-<li>对象引用变量保存的是存取变量的方法</li>
-<li><strong>对象引用变量</strong>并不是对象的容器，而是<strong>类似指向对象的指针，或者是地址</strong>。在Java中不知道也不必知道引用变量中实际装载的是什么，只有JVM才会知道如何使用引用来取得该对象。</li>
-</ul>
+<li><p>多态</p>
 </li>
-<li><p>对象声明、创建于赋值的3个步骤</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Dog myDog = <span class="keyword">new</span> Dog();</span><br></pre></td></tr></table></figure>
-<ol>
-<li>声明一个引用变量 <code>Dog myDog</code>：要求JVM分配空间给引用变量，此引用变量永远是Dog类型。但是myDog可以引用不同的Dog，除非被<code>final</code>修饰，那样只能引用固定的Dog不会再变。也可以引用到空指针。</li>
-<li>创建对象 <code>new Dog()</code>：要求JVM分配堆空间给新建的Dog对象。</li>
-<li>连接对象和引用 <code>=</code></li>
 </ol>
+<ul>
+<li>引用类型可以是实际对象的父类</li>
+<li>参数和返回类型也可以多态，比如当参数声明为父类类型时，可以传进子类对象，执行子类的方法。</li>
+</ul>
+<ol start="5">
+<li><p>是否有私有类</p>
+<p> 除了内部类并没有私有类这个概念，但有三个方法能够限制被继承。</p>
+<ul>
+<li><p>存取控制</p>
+<p>标记为非公有，非公有的类只能被同一个package里的类继承</p>
 </li>
-<li><p>int数组</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] nums = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">7</span>];</span><br></pre></td></tr></table></figure>
-<p> 数组是对象，里面的元素是primitive主数据类型</p>
+<li><p>使用<code>final</code>修饰符，代表该类是继承树末端，无法被继承</p>
+</li>
+<li><p>让该类只拥有<code>private</code>的构造程序</p>
+</li>
+</ul>
+</li>
+<li><p>关于<code>final</code></p>
+<p> 如果想要防止某个方法被覆盖，可以用<code>final</code>修饰该方法。将类标识成<code>final</code>的话意味着没有任何方法能够被覆盖。</p>
+</li>
+<li><p>覆盖的规则</p>
+<ul>
+<li>覆盖父类方法时，参数要一致，返回类型要兼容。</li>
+<li>存取权限不能变小，只能相同或者更开放。</li>
+</ul>
+</li>
+<li><p>方法的重载overload</p>
+<p> 方法名相同，参数不同</p>
+<ul>
+<li>必须更改参数类型。</li>
+<li>可以更改返回类型，但要符合返回类型是父类返回子类的要求。</li>
+<li>重载的方法存取权限可以任意设定。</li>
+</ul>
 </li>
 </ol>
 
@@ -349,10 +311,13 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E5%85%AD%E7%AB%A0%E7%AC%94%E8%AE%B0/" rel="next" title="Head First Java 第六章学习笔记">
-      Head First Java 第六章学习笔记 <i class="fa fa-chevron-right"></i>
+    <a href="/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%B9%9D%E7%AB%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="Head First Java 第九章学习笔记">
+      <i class="fa fa-chevron-left"></i> Head First Java 第九章学习笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/03/05/Python%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B901/" rel="next" title="Python零碎知识点记录01">
+      Python零碎知识点记录01 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -412,7 +377,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-primitive%E4%B8%BB%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">第三章  primitive主数据类型和引用</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF%E4%B8%8E%E5%A4%9A%E6%80%81"><span class="nav-number">1.</span> <span class="nav-text">继承与多态</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

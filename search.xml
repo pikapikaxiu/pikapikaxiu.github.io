@@ -1,58 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Head First Java 第七章学习笔记</title>
-    <url>/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%B8%83%E7%AB%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h3 id="继承与多态"><a href="#继承与多态" class="headerlink" title="继承与多态"></a>继承与多态</h3><ol>
-<li><p>了解继承</p>
-<p> 子类继承父类的实例变量和方法，子类可以加入自己的实例变量和方法，还可以覆盖继承来的方法。</p>
-<p> 当调用对象引用的方法时，会调用到与该对象类型最接近的方法，也就是<strong>最低阶的会胜出</strong>。最低阶的意思就是在层次树的最下方，JVM会从下往上找直到找到为止。</p>
-<span id="more"></span></li>
-<li><p><code>is-a</code>关系和<code>has-a</code>关系</p>
-<p> <code>is-a</code>:代表一种继承关系，是一种单向链式关系</p>
-<p> <code>has-a</code>:代表包含关系</p>
-</li>
-<li><p>在子类中打算引用父类的方法然后再加上额外的行为</p>
- <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">roam</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.roam();</span><br><span class="line">    <span class="comment">// my own roam stuff</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p> 使用<code>super</code>这个关键词取用父类，这样先执行父类的roam(),然后再执行自定义的行为。<code>super</code>类比于C++里的<code>::</code>。</p>
-<p> 相对<code>super</code>,<code>this</code>指向自己的引用。</p>
-</li>
-<li><p>多态</p>
-</li>
+    <title>Head First Java 第五章学习笔记</title>
+    <url>/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%BA%94%E7%AB%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h3 id="编写程序"><a href="#编写程序" class="headerlink" title="编写程序"></a>编写程序</h3><ol>
+<li>编写类的建议流程</li>
 </ol>
 <ul>
-<li>引用类型可以是实际对象的父类</li>
-<li>参数和返回类型也可以多态，比如当参数声明为父类类型时，可以传进子类对象，执行子类的方法。</li>
+<li>确定类的功能</li>
+<li>列出实例变量和方法</li>
+<li>编写方法的伪码</li>
+<li>编写方法的测试用程序</li>
+<li>实现类</li>
+<li>测试方法</li>
+<li>出错/重新设计</li>
 </ul>
-<ol start="5">
-<li><p>是否有私有类</p>
-<p> 除了内部类并没有私有类这个概念，但有三个方法能够限制被继承。</p>
+<ol start="2">
+<li>加强版<code>for</code>循环</li>
+</ol>
 <ul>
-<li><p>存取控制</p>
-<p>标记为非公有，非公有的类只能被同一个package里的类继承</p>
-</li>
-<li><p>使用<code>final</code>修饰符，代表该类是继承树末端，无法被继承</p>
-</li>
-<li><p>让该类只拥有<code>private</code>的构造程序</p>
+<li><p><code>for each</code>循环</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(String name:nameArray)&#123;&#125;</span><br><span class="line"><span class="comment">// String不是固定的，是根据后面数组元素类型写的</span></span><br><span class="line"><span class="comment">// name自己定</span></span><br></pre></td></tr></table></figure>
+<p>类似于python里的</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">list</span>[]:</span><br><span class="line">    ......</span><br></pre></td></tr></table></figure>
+<span id="more"></span></li>
+<li><p>java还支持两个变量控制<code>for</code>循环</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> a=<span class="number">1</span>,b=<span class="number">4</span>;a &lt; b;a++,b--)&#123;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p>还有就是三个部分是可以缺省的，初始化可以放在循环体外部，增量表达可以放在循环体内部，条件表达式不推荐缺省。</p>
 </li>
 </ul>
-</li>
-<li><p>关于<code>final</code></p>
-<p> 如果想要防止某个方法被覆盖，可以用<code>final</code>修饰该方法。将类标识成<code>final</code>的话意味着没有任何方法能够被覆盖。</p>
-</li>
-<li><p>覆盖的规则</p>
-<ul>
-<li>覆盖父类方法时，参数要一致，返回类型要兼容。</li>
-<li>存取权限不能变小，只能相同或者更开放。</li>
-</ul>
-</li>
-<li><p>方法的重载overload</p>
-<p> 方法名相同，参数不同</p>
-<ul>
-<li>必须更改参数类型。</li>
-<li>可以更改返回类型，但要符合返回类型是父类返回子类的要求。</li>
-<li>重载的方法存取权限可以任意设定。</li>
-</ul>
+<ol start="3">
+<li><p>转换primitive主数据类型</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> variable_int = Integar.parseInt(variable_str);</span><br></pre></td></tr></table></figure></li>
+<li><p><code>i++</code>vs<code>++i</code></p>
+<p> <code>i++</code>:先运用变量的值再执行加减操作</p>
+<p> <code>++i</code>:先执行加减操作再运用变量的值</p>
 </li>
 </ol>
 ]]></content>
@@ -144,130 +126,6 @@
 <li>引用永久性地离开它的范围，比如方法内声明赋值的对象引用</li>
 <li>引用被赋值到其它对象上，一开始引用的对象最后就会被回收</li>
 <li>直接将引用设为null</li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>技术笔记</tag>
-        <tag>Head First Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Head First Java 第五章学习笔记</title>
-    <url>/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%BA%94%E7%AB%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h3 id="编写程序"><a href="#编写程序" class="headerlink" title="编写程序"></a>编写程序</h3><ol>
-<li>编写类的建议流程</li>
-</ol>
-<ul>
-<li>确定类的功能</li>
-<li>列出实例变量和方法</li>
-<li>编写方法的伪码</li>
-<li>编写方法的测试用程序</li>
-<li>实现类</li>
-<li>测试方法</li>
-<li>出错/重新设计</li>
-</ul>
-<ol start="2">
-<li>加强版<code>for</code>循环</li>
-</ol>
-<ul>
-<li><p><code>for each</code>循环</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(String name:nameArray)&#123;&#125;</span><br><span class="line"><span class="comment">// String不是固定的，是根据后面数组元素类型写的</span></span><br><span class="line"><span class="comment">// name自己定</span></span><br></pre></td></tr></table></figure>
-<p>类似于python里的</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">list</span>[]:</span><br><span class="line">    ......</span><br></pre></td></tr></table></figure>
-<span id="more"></span></li>
-<li><p>java还支持两个变量控制<code>for</code>循环</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> a=<span class="number">1</span>,b=<span class="number">4</span>;a &lt; b;a++,b--)&#123;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-<li><p>还有就是三个部分是可以缺省的，初始化可以放在循环体外部，增量表达可以放在循环体内部，条件表达式不推荐缺省。</p>
-</li>
-</ul>
-<ol start="3">
-<li><p>转换primitive主数据类型</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> variable_int = Integar.parseInt(variable_str);</span><br></pre></td></tr></table></figure></li>
-<li><p><code>i++</code>vs<code>++i</code></p>
-<p> <code>i++</code>:先运用变量的值再执行加减操作</p>
-<p> <code>++i</code>:先执行加减操作再运用变量的值</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>技术笔记</tag>
-        <tag>Head First Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Head First Java 第八章学习笔记</title>
-    <url>/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E5%85%AB%E7%AB%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h3 id="接口与抽象类"><a href="#接口与抽象类" class="headerlink" title="接口与抽象类"></a>接口与抽象类</h3><p>1.<strong>抽象类</strong>：有些类不想要被初始化，也就是不想要被<code>new</code>出来，那么就标记这个类为<strong>抽象类</strong>，编译器就能知道这个类不能创建任何类型的实例。</p>
-<span id="more"></span>
-
-<ul>
-<li><p>格式</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Canine</span> <span class="keyword">extends</span> <span class="title">Animals</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">roam</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">makeCanine</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">go</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Canine c;</span><br><span class="line">        c=<span class="keyword">new</span> Dog();  <span class="comment">// Yes! 赋值子类对象给父类引用</span></span><br><span class="line">        c=<span class="keyword">new</span> Canine();  <span class="comment">// No!!!抽象类！</span></span><br><span class="line">        c.roam();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>设计好继承结构之后，决定哪些类是抽象的，哪些是具体的，具体的类是可以被初始化为对象的。</p>
-</li>
-<li><p>抽象类不可以<code>new</code>一个对象，但是可以保存一个数组对象（给子类）。</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> Animal[] animals = <span class="keyword">new</span> Animal[<span class="number">5</span>];</span><br></pre></td></tr></table></figure></li>
-</ul>
-<ol start="2">
-<li><p>在使用多态时，要注意对象多种类型之间的差异。</p>
- <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Dog dog1 = <span class="keyword">new</span> Dog();</span><br><span class="line">Animal dog2 = <span class="keyword">new</span> Dog();</span><br><span class="line">Object dog3 = <span class="keyword">new</span> Dog();</span><br></pre></td></tr></table></figure>
-<p> 注意这三个dog对象的区别:</p>
-<ul>
-<li>dog1拥有  Dog / Animal / Object 中所有的⽅法。</li>
-<li>dog2拥有Animal /<br>Object中的⽅法，不能调⽤Dog类特有的⽅法。</li>
-<li>dog3只拥有 Object  中的⽅法，不能调⽤  Animal / Dog</li>
-</ul>
-<p> 类中的⽅法。这就是在使⽤多态过程中，需要特别注意的问题。</p>
-</li>
-<li><p>引用类型转换</p>
-</li>
-</ol>
-<ul>
-<li>大类型转小类型<br>上面例子里的dog2 and dog3是可以转换成dog类型的  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(dog2 <span class="keyword">instanceof</span> Dog)&#123;</span><br><span class="line">    Dog dog4 = (dog) dog2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-先用<code>instanceof</code>判断</li>
-<li>小类型转大类型<br>没有什么问题直接转<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Animal dog5 = dog1;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<ol start="4">
-<li><p><code>Object</code>是所有对象的父类，<code>Object</code>不是抽象类</p>
-<p> 一些方法，不加<code>final</code>的可以覆盖</p>
-<ul>
-<li>equals()</li>
-<li>hashCode()</li>
-<li>toString()</li>
-<li>getClass()</li>
-</ul>
-</li>
-<li><p>Java不支持多重继承，可能会出现致命方块问题</p>
-</li>
-<li><p>接口</p>
-<p> 部分类需要具体实现某些方法，如果定义在父类里作为抽象方法，那么不需要执行这个方法的子类也要具体实现这个抽象方法造成浪费，所以最好就是创造出类似于多重继承的关系，但是Java是不支持多重继承的，所以有接口这个概念。</p>
-<ul>
-<li><p>接口的应用场景：</p>
-<ul>
-<li>在当前类族中，需要实现某些子类不需要的方法</li>
-<li>不同类族的多个类需要实现相同的方法</li>
-</ul>
-</li>
-<li><p>接口是100%的纯抽象类，接口里的所有方法都是抽象的需要实现。</p>
-</li>
-<li><p>接口的声明</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Pet</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>接口的实现</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span> <span class="keyword">implements</span> <span class="title">Pet</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>接口里的方法必然是<code>public</code> and <code>abstract</code>,可以省略<code>abstract</code></p>
-</li>
-<li><p>不同继承树的类可以实现相同的接口，这也是接口应用场景之一</p>
-</li>
-<li><p>一个类可以使用多个接口</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span> <span class="keyword">implements</span> <span class="title">Pet</span>,<span class="title">Saveable</span>,<span class="title">paintable</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 </ol>
@@ -383,6 +241,148 @@
       </tags>
   </entry>
   <entry>
+    <title>Head First Java 第七章学习笔记</title>
+    <url>/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%B8%83%E7%AB%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h3 id="继承与多态"><a href="#继承与多态" class="headerlink" title="继承与多态"></a>继承与多态</h3><ol>
+<li><p>了解继承</p>
+<p> 子类继承父类的实例变量和方法，子类可以加入自己的实例变量和方法，还可以覆盖继承来的方法。</p>
+<p> 当调用对象引用的方法时，会调用到与该对象类型最接近的方法，也就是<strong>最低阶的会胜出</strong>。最低阶的意思就是在层次树的最下方，JVM会从下往上找直到找到为止。</p>
+<span id="more"></span></li>
+<li><p><code>is-a</code>关系和<code>has-a</code>关系</p>
+<p> <code>is-a</code>:代表一种继承关系，是一种单向链式关系</p>
+<p> <code>has-a</code>:代表包含关系</p>
+</li>
+<li><p>在子类中打算引用父类的方法然后再加上额外的行为</p>
+ <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">roam</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.roam();</span><br><span class="line">    <span class="comment">// my own roam stuff</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 使用<code>super</code>这个关键词取用父类，这样先执行父类的roam(),然后再执行自定义的行为。<code>super</code>类比于C++里的<code>::</code>。</p>
+<p> 相对<code>super</code>,<code>this</code>指向自己的引用。</p>
+</li>
+<li><p>多态</p>
+</li>
+</ol>
+<ul>
+<li>引用类型可以是实际对象的父类</li>
+<li>参数和返回类型也可以多态，比如当参数声明为父类类型时，可以传进子类对象，执行子类的方法。</li>
+</ul>
+<ol start="5">
+<li><p>是否有私有类</p>
+<p> 除了内部类并没有私有类这个概念，但有三个方法能够限制被继承。</p>
+<ul>
+<li><p>存取控制</p>
+<p>标记为非公有，非公有的类只能被同一个package里的类继承</p>
+</li>
+<li><p>使用<code>final</code>修饰符，代表该类是继承树末端，无法被继承</p>
+</li>
+<li><p>让该类只拥有<code>private</code>的构造程序</p>
+</li>
+</ul>
+</li>
+<li><p>关于<code>final</code></p>
+<p> 如果想要防止某个方法被覆盖，可以用<code>final</code>修饰该方法。将类标识成<code>final</code>的话意味着没有任何方法能够被覆盖。</p>
+</li>
+<li><p>覆盖的规则</p>
+<ul>
+<li>覆盖父类方法时，参数要一致，返回类型要兼容。</li>
+<li>存取权限不能变小，只能相同或者更开放。</li>
+</ul>
+</li>
+<li><p>方法的重载overload</p>
+<p> 方法名相同，参数不同</p>
+<ul>
+<li>必须更改参数类型。</li>
+<li>可以更改返回类型，但要符合返回类型是父类返回子类的要求。</li>
+<li>重载的方法存取权限可以任意设定。</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>技术笔记</tag>
+        <tag>Head First Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Head First Java 第八章学习笔记</title>
+    <url>/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E5%85%AB%E7%AB%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h3 id="接口与抽象类"><a href="#接口与抽象类" class="headerlink" title="接口与抽象类"></a>接口与抽象类</h3><p>1.<strong>抽象类</strong>：有些类不想要被初始化，也就是不想要被<code>new</code>出来，那么就标记这个类为<strong>抽象类</strong>，编译器就能知道这个类不能创建任何类型的实例。</p>
+<span id="more"></span>
+
+<ul>
+<li><p>格式</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Canine</span> <span class="keyword">extends</span> <span class="title">Animals</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">roam</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">makeCanine</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">go</span><span class="params">()</span></span>&#123;</span><br><span class="line">        Canine c;</span><br><span class="line">        c=<span class="keyword">new</span> Dog();  <span class="comment">// Yes! 赋值子类对象给父类引用</span></span><br><span class="line">        c=<span class="keyword">new</span> Canine();  <span class="comment">// No!!!抽象类！</span></span><br><span class="line">        c.roam();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>设计好继承结构之后，决定哪些类是抽象的，哪些是具体的，具体的类是可以被初始化为对象的。</p>
+</li>
+<li><p>抽象类不可以<code>new</code>一个对象，但是可以保存一个数组对象（给子类）。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> Animal[] animals = <span class="keyword">new</span> Animal[<span class="number">5</span>];</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="2">
+<li><p>在使用多态时，要注意对象多种类型之间的差异。</p>
+ <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Dog dog1 = <span class="keyword">new</span> Dog();</span><br><span class="line">Animal dog2 = <span class="keyword">new</span> Dog();</span><br><span class="line">Object dog3 = <span class="keyword">new</span> Dog();</span><br></pre></td></tr></table></figure>
+<p> 注意这三个dog对象的区别:</p>
+<ul>
+<li>dog1拥有  Dog / Animal / Object 中所有的⽅法。</li>
+<li>dog2拥有Animal /<br>Object中的⽅法，不能调⽤Dog类特有的⽅法。</li>
+<li>dog3只拥有 Object  中的⽅法，不能调⽤  Animal / Dog</li>
+</ul>
+<p> 类中的⽅法。这就是在使⽤多态过程中，需要特别注意的问题。</p>
+</li>
+<li><p>引用类型转换</p>
+</li>
+</ol>
+<ul>
+<li>大类型转小类型<br>上面例子里的dog2 and dog3是可以转换成dog类型的  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(dog2 <span class="keyword">instanceof</span> Dog)&#123;</span><br><span class="line">    Dog dog4 = (dog) dog2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+先用<code>instanceof</code>判断</li>
+<li>小类型转大类型<br>没有什么问题直接转<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Animal dog5 = dog1;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<ol start="4">
+<li><p><code>Object</code>是所有对象的父类，<code>Object</code>不是抽象类</p>
+<p> 一些方法，不加<code>final</code>的可以覆盖</p>
+<ul>
+<li>equals()</li>
+<li>hashCode()</li>
+<li>toString()</li>
+<li>getClass()</li>
+</ul>
+</li>
+<li><p>Java不支持多重继承，可能会出现致命方块问题</p>
+</li>
+<li><p>接口</p>
+<p> 部分类需要具体实现某些方法，如果定义在父类里作为抽象方法，那么不需要执行这个方法的子类也要具体实现这个抽象方法造成浪费，所以最好就是创造出类似于多重继承的关系，但是Java是不支持多重继承的，所以有接口这个概念。</p>
+<ul>
+<li><p>接口的应用场景：</p>
+<ul>
+<li>在当前类族中，需要实现某些子类不需要的方法</li>
+<li>不同类族的多个类需要实现相同的方法</li>
+</ul>
+</li>
+<li><p>接口是100%的纯抽象类，接口里的所有方法都是抽象的需要实现。</p>
+</li>
+<li><p>接口的声明</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Pet</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>接口的实现</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span> <span class="keyword">implements</span> <span class="title">Pet</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>接口里的方法必然是<code>public</code> and <code>abstract</code>,可以省略<code>abstract</code></p>
+</li>
+<li><p>不同继承树的类可以实现相同的接口，这也是接口应用场景之一</p>
+</li>
+<li><p>一个类可以使用多个接口</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span> <span class="keyword">implements</span> <span class="title">Pet</span>,<span class="title">Saveable</span>,<span class="title">paintable</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>技术笔记</tag>
+        <tag>Head First Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Head First Java 第六章学习笔记</title>
     <url>/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E5%85%AD%E7%AB%A0%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h3 id="使用Java函数库"><a href="#使用Java函数库" class="headerlink" title="使用Java函数库"></a>使用Java函数库</h3><ol>
@@ -428,67 +428,6 @@
 <li><p><code>|</code></p>
 </li>
 </ul>
-]]></content>
-      <categories>
-        <category>Java</category>
-      </categories>
-      <tags>
-        <tag>技术笔记</tag>
-        <tag>Head First Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Head First Java 第四章学习笔记</title>
-    <url>/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E5%9B%9B%E7%AB%A0%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h3 id="方法操作实例变量"><a href="#方法操作实例变量" class="headerlink" title="方法操作实例变量"></a>方法操作实例变量</h3><ol>
-<li><p>如果方法被声明为有返回类型，那么必须返回所声明的类型</p>
-</li>
-<li><p>Java通过拷贝传递值</p>
-</li>
-<li><p>封装</p>
- <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String brand;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setBrand</span><span class="params">(String abrand)</span></span>&#123;</span><br><span class="line">    brand = abrand;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">String <span class="title">getBrand</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> brand;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p> <strong>封装的基本原则</strong>：将实例变量标记为<code>private</code>,将<code>getters</code>、<code>setters</code>标记为<code>public</code>。</p>
-<span id="more"></span></li>
-<li><p>可以手动初始化实例变量，如果没有手动初始化的话也是默认有值的。</p>
-<table>
-<thead>
-<tr>
-<th align="center">类型</th>
-<th align="center">默认值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">integers(包括char)</td>
-<td align="center">0</td>
-</tr>
-<tr>
-<td align="center">floating points</td>
-<td align="center">0.0</td>
-</tr>
-<tr>
-<td align="center">booleans</td>
-<td align="center">False</td>
-</tr>
-<tr>
-<td align="center">references</td>
-<td align="center">null</td>
-</tr>
-</tbody></table>
-</li>
-<li><p>实例变量与局部变量之间的差别</p>
-<ul>
-<li>实例变量声明在类内而非方法中</li>
-<li>局部变量声明在方法内</li>
-<li>局部变量在使用前必须初始化</li>
-</ul>
-</li>
-<li><p>变量的比较</p>
-<ul>
-<li>使用<code>==</code>比较两个primitive主数据类型是否相等，或者判断两个引用是否引用同一个对象  <figure class="highlight"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">byte</span> b = <span class="number">3</span>;</span><br><span class="line">System.out.println(a == b);  # true</span><br><span class="line"># 只是比较字节组合，无关类型</span><br></pre></td></tr></table></figure></li>
-<li>使用<code>equals()</code>判断两个对象在意义上是否相等，例如两个String对象是否有相同字节</li>
-</ul>
-</li>
-</ol>
 ]]></content>
       <categories>
         <category>Java</category>
@@ -639,6 +578,67 @@
       </categories>
       <tags>
         <tag>技术笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Head First Java 第四章学习笔记</title>
+    <url>/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E5%9B%9B%E7%AB%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h3 id="方法操作实例变量"><a href="#方法操作实例变量" class="headerlink" title="方法操作实例变量"></a>方法操作实例变量</h3><ol>
+<li><p>如果方法被声明为有返回类型，那么必须返回所声明的类型</p>
+</li>
+<li><p>Java通过拷贝传递值</p>
+</li>
+<li><p>封装</p>
+ <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String brand;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setBrand</span><span class="params">(String abrand)</span></span>&#123;</span><br><span class="line">    brand = abrand;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">String <span class="title">getBrand</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> brand;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> <strong>封装的基本原则</strong>：将实例变量标记为<code>private</code>,将<code>getters</code>、<code>setters</code>标记为<code>public</code>。</p>
+<span id="more"></span></li>
+<li><p>可以手动初始化实例变量，如果没有手动初始化的话也是默认有值的。</p>
+<table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">integers(包括char)</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">floating points</td>
+<td align="center">0.0</td>
+</tr>
+<tr>
+<td align="center">booleans</td>
+<td align="center">False</td>
+</tr>
+<tr>
+<td align="center">references</td>
+<td align="center">null</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>实例变量与局部变量之间的差别</p>
+<ul>
+<li>实例变量声明在类内而非方法中</li>
+<li>局部变量声明在方法内</li>
+<li>局部变量在使用前必须初始化</li>
+</ul>
+</li>
+<li><p>变量的比较</p>
+<ul>
+<li>使用<code>==</code>比较两个primitive主数据类型是否相等，或者判断两个引用是否引用同一个对象  <figure class="highlight"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">byte</span> b = <span class="number">3</span>;</span><br><span class="line">System.out.println(a == b);  # true</span><br><span class="line"># 只是比较字节组合，无关类型</span><br></pre></td></tr></table></figure></li>
+<li>使用<code>equals()</code>判断两个对象在意义上是否相等，例如两个String对象是否有相同字节</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>技术笔记</tag>
+        <tag>Head First Java</tag>
       </tags>
   </entry>
   <entry>

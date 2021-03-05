@@ -19,17 +19,21 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Categories">
-<meta property="og:url" content="http://example.com/categories/index.html">
+  <meta name="description" content="方法操作实例变量 如果方法被声明为有返回类型，那么必须返回所声明的类型  Java通过拷贝传递值  封装  1234567String brand;void setBrand(String abrand)&amp;#123;    brand &#x3D; abrand;&amp;#125;String getBrand()&amp;#123;    return brand;&amp;#125;  封装的基本原则：将实例变量标记为pri">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Head First Java 第四章学习笔记">
+<meta property="og:url" content="http://example.com/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E5%9B%9B%E7%AB%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="pikapika的学习记录">
+<meta property="og:description" content="方法操作实例变量 如果方法被声明为有返回类型，那么必须返回所声明的类型  Java通过拷贝传递值  封装  1234567String brand;void setBrand(String abrand)&amp;#123;    brand &#x3D; abrand;&amp;#125;String getBrand()&amp;#123;    return brand;&amp;#125;  封装的基本原则：将实例变量标记为pri">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-03-05T08:55:08.000Z">
-<meta property="article:modified_time" content="2021-03-05T09:37:49.813Z">
+<meta property="article:published_time" content="2021-03-05T09:21:28.000Z">
+<meta property="article:modified_time" content="2021-03-05T10:08:44.467Z">
 <meta property="article:author" content="pikapikaxiu">
+<meta property="article:tag" content="技术笔记">
+<meta property="article:tag" content="Head First Java">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/categories/">
+<link rel="canonical" href="http://example.com/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E5%9B%9B%E7%AB%A0%E7%AC%94%E8%AE%B0/">
 
 
 <script id="page-configurations">
@@ -37,13 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>Categories | pikapika的学习记录
-</title>
+  <title>Head First Java 第四章学习笔记 | pikapika的学习记录</title>
   
 
 
@@ -183,51 +186,144 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
-          <div class="content page posts-expand">
+          <div class="content post posts-expand">
             
 
     
-    
-    
-    <div class="post-block" lang="en">
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E5%9B%9B%E7%AB%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/pikachu_pointer.png">
+      <meta itemprop="name" content="pikapikaxiu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="pikapika的学习记录">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Head First Java 第四章学习笔记
+        </h1>
 
-<h1 class="post-title" itemprop="name headline">Categories
-</h1>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
 
-<div class="post-meta">
+              <time title="Created: 2021-03-05 17:21:28 / Modified: 18:08:44" itemprop="dateCreated datePublished" datetime="2021-03-05T17:21:28+08:00">2021-03-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="方法操作实例变量"><a href="#方法操作实例变量" class="headerlink" title="方法操作实例变量"></a>方法操作实例变量</h3><ol>
+<li><p>如果方法被声明为有返回类型，那么必须返回所声明的类型</p>
+</li>
+<li><p>Java通过拷贝传递值</p>
+</li>
+<li><p>封装</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">String brand;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setBrand</span><span class="params">(String abrand)</span></span>&#123;</span><br><span class="line">    brand = abrand;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">String <span class="title">getBrand</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> brand;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> <strong>封装的基本原则</strong>：将实例变量标记为<code>private</code>,将<code>getters</code>、<code>setters</code>标记为<code>public</code>。</p>
+</li>
+<li><p>可以手动初始化实例变量，如果没有手动初始化的话也是默认有值的。</p>
+<table>
+<thead>
+<tr>
+<th align="center">类型</th>
+<th align="center">默认值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">integers(包括char)</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">floating points</td>
+<td align="center">0.0</td>
+</tr>
+<tr>
+<td align="center">booleans</td>
+<td align="center">False</td>
+</tr>
+<tr>
+<td align="center">references</td>
+<td align="center">null</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>实例变量与局部变量之间的差别</p>
+<ul>
+<li>实例变量声明在类内而非方法中</li>
+<li>局部变量声明在方法内</li>
+<li>局部变量在使用前必须初始化</li>
+</ul>
+</li>
+<li><p>变量的比较</p>
+<ul>
+<li>使用<code>==</code>比较两个primitive主数据类型是否相等，或者判断两个引用是否引用同一个对象  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">3</span>;</span><br><span class="line"><span class="keyword">byte</span> b = <span class="number">3</span>;</span><br><span class="line">System.out.println(a == b);  # true</span><br><span class="line"># 只是比较字节组合，无关类型</span><br></pre></td></tr></table></figure></li>
+<li>使用<code>equals()</code>判断两个对象在意义上是否相等，例如两个String对象是否有相同字节</li>
+</ul>
+</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/" rel="tag"># 技术笔记</a>
+              <a href="/tags/Head-First-Java/" rel="tag"># Head First Java</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="Head First Java 第三章学习笔记">
+      <i class="fa fa-chevron-left"></i> Head First Java 第三章学习笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%BA%94%E7%AB%A0%E7%AC%94%E8%AE%B0/" rel="next" title="Head First Java 第五章学习笔记">
+      Head First Java 第五章学习笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
-          <div class="category-all-page">
-            <div class="category-all-title">
-              1 category in total
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">3</span></li></ul>
-            </div>
-          </div>
-        
-      </div>
-      
-      
-      
-    </div>
-    
-
-    
-    
-    
 
 
           </div>
@@ -278,6 +374,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E6%93%8D%E4%BD%9C%E5%AE%9E%E4%BE%8B%E5%8F%98%E9%87%8F"><span class="nav-number">1.</span> <span class="nav-text">方法操作实例变量</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

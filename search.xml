@@ -22,7 +22,8 @@
 <li><p><code>for each</code>循环</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(String name:nameArray)&#123;&#125;</span><br><span class="line"><span class="comment">// String不是固定的，是根据后面数组元素类型写的</span></span><br><span class="line"><span class="comment">// name自己定</span></span><br></pre></td></tr></table></figure>
 <p>类似于python里的</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">list</span>[]:</span><br><span class="line">    ......</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">list</span>[]:</span><br><span class="line">    ......</span><br></pre></td></tr></table></figure>
+<span id="more"></span></li>
 <li><p>java还支持两个变量控制<code>for</code>循环</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> a=<span class="number">1</span>,b=<span class="number">4</span>;a &lt; b;a++,b--)&#123;&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
 <li><p>还有就是三个部分是可以缺省的，初始化可以放在循环体外部，增量表达可以放在循环体内部，条件表达式不推荐缺省。</p>
@@ -56,7 +57,7 @@
 <li><p>封装</p>
  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">String brand;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setBrand</span><span class="params">(String abrand)</span></span>&#123;</span><br><span class="line">    brand = abrand;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">String <span class="title">getBrand</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> brand;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p> <strong>封装的基本原则</strong>：将实例变量标记为<code>private</code>,将<code>getters</code>、<code>setters</code>标记为<code>public</code>。</p>
-</li>
+<span id="more"></span></li>
 <li><p>可以手动初始化实例变量，如果没有手动初始化的话也是默认有值的。</p>
 <table>
 <thead>

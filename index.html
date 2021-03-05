@@ -420,7 +420,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%B9%9D%E7%AB%A0%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%BA%94%E7%AB%A0%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/pikachu_pointer.png">
@@ -434,7 +434,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%B9%9D%E7%AB%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Head First Java 第九章学习笔记</a>
+            <a href="/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%BA%94%E7%AB%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Head First Java 第五章学习笔记</a>
         </h2>
 
         <div class="post-meta">
@@ -445,7 +445,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2021-03-05 17:21:28 / Modified: 18:21:50" itemprop="dateCreated datePublished" datetime="2021-03-05T17:21:28+08:00">2021-03-05</time>
+              <time title="Created: 2021-03-05 17:21:28 / Modified: 18:15:23" itemprop="dateCreated datePublished" datetime="2021-03-05T17:21:28+08:00">2021-03-05</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -468,14 +468,29 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="构造器与垃圾收集器"><a href="#构造器与垃圾收集器" class="headerlink" title="构造器与垃圾收集器"></a>构造器与垃圾收集器</h3><ol>
-<li><p>堆与栈<br> JVM启动时会从底层操作系统取得一块内存并以此区段执行Java程序，一般关注两种内存区域：</p>
+          <h3 id="编写程序"><a href="#编写程序" class="headerlink" title="编写程序"></a>编写程序</h3><ol>
+<li>编写类的建议流程</li>
+</ol>
 <ul>
-<li>堆<code>heap</code>：对象的生存空间</li>
-<li>栈<code>stack</code>:方法调用和局部变量的生存空间
+<li>确定类的功能</li>
+<li>列出实例变量和方法</li>
+<li>编写方法的伪码</li>
+<li>编写方法的测试用程序</li>
+<li>实现类</li>
+<li>测试方法</li>
+<li>出错/重新设计</li>
+</ul>
+<ol start="2">
+<li>加强版<code>for</code>循环</li>
+</ol>
+<ul>
+<li><p><code>for each</code>循环</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(String name:nameArray)&#123;&#125;</span><br><span class="line"><span class="comment">// String不是固定的，是根据后面数组元素类型写的</span></span><br><span class="line"><span class="comment">// name自己定</span></span><br></pre></td></tr></table></figure>
+<p>类似于python里的</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">list</span>[]:</span><br><span class="line">    ......</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%B9%9D%E7%AB%A0%E7%AC%94%E8%AE%B0/#more" rel="contents">
+              <a class="btn" href="/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%BA%94%E7%AB%A0%E7%AC%94%E8%AE%B0/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -579,100 +594,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%BA%94%E7%AB%A0%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/pikachu_pointer.png">
-      <meta itemprop="name" content="pikapikaxiu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="pikapika的学习记录">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%BA%94%E7%AB%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Head First Java 第五章学习笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-03-05 17:21:28 / Modified: 18:15:23" itemprop="dateCreated datePublished" datetime="2021-03-05T17:21:28+08:00">2021-03-05</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="编写程序"><a href="#编写程序" class="headerlink" title="编写程序"></a>编写程序</h3><ol>
-<li>编写类的建议流程</li>
-</ol>
-<ul>
-<li>确定类的功能</li>
-<li>列出实例变量和方法</li>
-<li>编写方法的伪码</li>
-<li>编写方法的测试用程序</li>
-<li>实现类</li>
-<li>测试方法</li>
-<li>出错/重新设计</li>
-</ul>
-<ol start="2">
-<li>加强版<code>for</code>循环</li>
-</ol>
-<ul>
-<li><p><code>for each</code>循环</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(String name:nameArray)&#123;&#125;</span><br><span class="line"><span class="comment">// String不是固定的，是根据后面数组元素类型写的</span></span><br><span class="line"><span class="comment">// name自己定</span></span><br></pre></td></tr></table></figure>
-<p>类似于python里的</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">list</span>[]:</span><br><span class="line">    ......</span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%BA%94%E7%AB%A0%E7%AC%94%E8%AE%B0/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E5%85%AD%E7%AB%A0%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -726,81 +647,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E5%85%AD%E7%AB%A0%E7%AC%94%E8%AE%B0/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E5%85%AB%E7%AB%A0%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/pikachu_pointer.png">
-      <meta itemprop="name" content="pikapikaxiu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="pikapika的学习记录">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E5%85%AB%E7%AB%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Head First Java 第八章学习笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-03-05 17:21:28 / Modified: 18:21:12" itemprop="dateCreated datePublished" datetime="2021-03-05T17:21:28+08:00">2021-03-05</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h3 id="接口与抽象类"><a href="#接口与抽象类" class="headerlink" title="接口与抽象类"></a>接口与抽象类</h3><p>1.<strong>抽象类</strong>：有些类不想要被初始化，也就是不想要被<code>new</code>出来，那么就标记这个类为<strong>抽象类</strong>，编译器就能知道这个类不能创建任何类型的实例。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E5%85%AB%E7%AB%A0%E7%AC%94%E8%AE%B0/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -883,6 +729,160 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E5%9B%9B%E7%AB%A0%E7%AC%94%E8%AE%B0/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%B9%9D%E7%AB%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/pikachu_pointer.png">
+      <meta itemprop="name" content="pikapikaxiu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="pikapika的学习记录">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%B9%9D%E7%AB%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Head First Java 第九章学习笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-03-05 17:21:28 / Modified: 18:21:50" itemprop="dateCreated datePublished" datetime="2021-03-05T17:21:28+08:00">2021-03-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="构造器与垃圾收集器"><a href="#构造器与垃圾收集器" class="headerlink" title="构造器与垃圾收集器"></a>构造器与垃圾收集器</h3><ol>
+<li><p>堆与栈<br> JVM启动时会从底层操作系统取得一块内存并以此区段执行Java程序，一般关注两种内存区域：</p>
+<ul>
+<li>堆<code>heap</code>：对象的生存空间</li>
+<li>栈<code>stack</code>:方法调用和局部变量的生存空间
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%B9%9D%E7%AB%A0%E7%AC%94%E8%AE%B0/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E5%85%AB%E7%AB%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/pikachu_pointer.png">
+      <meta itemprop="name" content="pikapikaxiu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="pikapika的学习记录">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E5%85%AB%E7%AB%A0%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Head First Java 第八章学习笔记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-03-05 17:21:28 / Modified: 18:21:12" itemprop="dateCreated datePublished" datetime="2021-03-05T17:21:28+08:00">2021-03-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="接口与抽象类"><a href="#接口与抽象类" class="headerlink" title="接口与抽象类"></a>接口与抽象类</h3><p>1.<strong>抽象类</strong>：有些类不想要被初始化，也就是不想要被<code>new</code>出来，那么就标记这个类为<strong>抽象类</strong>，编译器就能知道这个类不能创建任何类型的实例。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E5%85%AB%E7%AB%A0%E7%AC%94%E8%AE%B0/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>

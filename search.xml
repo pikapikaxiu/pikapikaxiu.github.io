@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Head First Java 第三章学习笔记</title>
+    <url>/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%AC%94%E8%AE%B0/</url>
+    <content><![CDATA[<h2 id="第三章-primitive主数据类型和引用"><a href="#第三章-primitive主数据类型和引用" class="headerlink" title="第三章  primitive主数据类型和引用"></a>第三章  primitive主数据类型和引用</h2><ol>
+<li><p>变量有两种：<code>primitive主数据类型</code>、<code>引用</code></p>
+<ul>
+<li><p><code>primitive主数据类型</code><br>保存基本类型的值</p>
+</li>
+<li><p><code>引用</code><br>保存对象的引用</p>
+<span id="more"></span></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">类型</th>
+<th align="center">位数</th>
+<th align="center">值域</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>boolean</code></td>
+<td align="center">boolean</td>
+<td align="center">JVM决定</td>
+<td align="center">True或False</td>
+</tr>
+<tr>
+<td align="center"><code>char</code></td>
+<td align="center">char</td>
+<td align="center">16bits</td>
+<td align="center">0~65535</td>
+</tr>
+<tr>
+<td align="center"><code>integer</code></td>
+<td align="center">byte</td>
+<td align="center">8bits</td>
+<td align="center">-128~127</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">short</td>
+<td align="center">16bits</td>
+<td align="center">-2^15 ~ 2^15 -1</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">int</td>
+<td align="center">32bits</td>
+<td align="center">-2^31 ~ 2^31-1</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">long</td>
+<td align="center">64bits</td>
+<td align="center">-很大~+很大</td>
+</tr>
+<tr>
+<td align="center"><code>浮点型</code></td>
+<td align="center">float</td>
+<td align="center">32bits</td>
+<td align="center">范围规模可变</td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center">doubale</td>
+<td align="center">64bits</td>
+<td align="center">范围规模可变</td>
+</tr>
+</tbody></table>
+<p> 小数默认为<code>double</code>,<code>float</code>标注为：float a = 3.14f;</p>
+</li>
+<li><p>primitive主数据类型赋值时要小心溢出</p>
+</li>
+<li><p>对象引用</p>
+<ul>
+<li>没有对象变量，只有<strong>引用到对象的变量</strong>。</li>
+<li>对象引用变量保存的是存取变量的方法</li>
+<li><strong>对象引用变量</strong>并不是对象的容器，而是<strong>类似指向对象的指针，或者是地址</strong>。在Java中不知道也不必知道引用变量中实际装载的是什么，只有JVM才会知道如何使用引用来取得该对象。</li>
+</ul>
+</li>
+<li><p>对象声明、创建于赋值的3个步骤</p>
+ <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Dog myDog = <span class="keyword">new</span> Dog();</span><br></pre></td></tr></table></figure>
+<ol>
+<li>声明一个引用变量 <code>Dog myDog</code>：要求JVM分配空间给引用变量，此引用变量永远是Dog类型。但是myDog可以引用不同的Dog，除非被<code>final</code>修饰，那样只能引用固定的Dog不会再变。也可以引用到空指针。</li>
+<li>创建对象 <code>new Dog()</code>：要求JVM分配堆空间给新建的Dog对象。</li>
+<li>连接对象和引用 <code>=</code></li>
+</ol>
+</li>
+<li><p>int数组</p>
+ <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span>[] nums = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">7</span>];</span><br></pre></td></tr></table></figure>
+<p> 数组是对象，里面的元素是primitive主数据类型</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>技术笔记</tag>
+        <tag>Head First Java</tag>
+      </tags>
+  </entry>
+</search>

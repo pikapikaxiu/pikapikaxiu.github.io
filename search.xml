@@ -972,4 +972,78 @@
         <category>胡言乱语</category>
       </categories>
   </entry>
+  <entry>
+    <title>Java核心技术笔记 第6章 接口、lambda表达式和内部类</title>
+    <url>/2021/05/21/java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0-%E7%AC%AC6%E7%AB%A0-%E6%8E%A5%E5%8F%A3-lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%92%8C%E5%86%85%E9%83%A8%E7%B1%BB/</url>
+    <content><![CDATA[<p>学习记录</p>
+<!--mores-->
+<h3 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h3><h4 id="接口的概念"><a href="#接口的概念" class="headerlink" title="接口的概念"></a>接口的概念</h4><p>接口的概念我觉得还是Head First Java里面讲的比较清楚：<br><code>部分类需要具体实现某些方法，如果定义在父类里作为抽象方法，那么不需要执行这个方法的子类也要具体实现这个抽象方法造成浪费，所以最好就是创造出类似于多重继承的关系，但是Java是不支持多重继承的，所以有接口这个概念。</code></p>
+<ul>
+<li>接口不是类:<code>A Java Interface is like a 100% pure abstract class.</code></li>
+</ul>
+<h4 id="接口属性"><a href="#接口属性" class="headerlink" title="接口属性"></a>接口属性</h4><ul>
+<li>不能通过<code>new</code>实例化接口，可以声明接口变量，引用实现了这个接口的类的对象。</li>
+<li>**接口里所有方法都自动是<code>public</code>方法，接口中的字段都是<code>public static final</code>**，在接口说明方法时不必提供关键字<code>public</code>，但是在实现接口时必须把方法声明为<code>public</code>，否则编译器将认为这个方法的访问属性是包可见性，这是类的默认访问属性。</li>
+<li>JAva 9中，接口中的方法可以是<code>private</code>，<code>private</code>方法可以是静态或者实例方法，仅限于接口本身方法使用，作为接口中其它方法的辅助方法。</li>
+</ul>
+<h4 id="接口与抽象类"><a href="#接口与抽象类" class="headerlink" title="接口与抽象类"></a>接口与抽象类</h4><p>讲Java不像C++支持多重继承，所以会有接口的存在，一个类只能有一个超类，但是可以实现多个接口。</p>
+<h4 id="静态和私有方法"><a href="#静态和私有方法" class="headerlink" title="静态和私有方法"></a>静态和私有方法</h4><p>在Java 8中，允许在接口中增加静态方法，但是这有违于接口作为抽象规范的初衷。所以通常做法是将静态方法放在伴随类里面：<code>Collection</code>和<code>Collections</code>、<code>Path</code>和<code>Paths</code>。</p>
+<h4 id="默认方法"><a href="#默认方法" class="headerlink" title="默认方法"></a>默认方法</h4><p>默认方法为接口提供一个默认实现，必须用<code>default</code>修饰符标记这样的方法。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">default</span> Comparator&lt;T&gt; <span class="title">reversed</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Collections.reverseOrder(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>默认方法的一个重要用法是<code>接口演化</code>。</p>
+<h4 id="解决默认方法冲突"><a href="#解决默认方法冲突" class="headerlink" title="解决默认方法冲突"></a>解决默认方法冲突</h4><p>先在一个接口中一个方法定义为默认方法，然后又在超类或者另一个接口中定义同样的方法，规则如下：  </p>
+<ul>
+<li><code>超类优先,在同名、相同参数类型下</code>。这正是<strong>类优先</strong>原则。</li>
+<li>如果一个接口提供了默认方法，另一个接口提供了同名且参数类型相同的方法，<code>必须覆盖这个方法解决冲突</code>。  书上的例子是这样的：   <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">default</span> String <span class="title">getName</span><span class="params">()</span></span>&#123;<span class="keyword">return</span> <span class="string">&quot;&quot;</span>;&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Named</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">default</span> String <span class="title">getName</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> getClass().getName()+<span class="string">&quot;_&quot;</span>+hashCode();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">implements</span> <span class="title">Person</span>,<span class="title">Name</span></span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+  这种情况下会报错，需要在两个冲突方法中选择一个。  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span> <span class="keyword">implements</span> <span class="title">Person</span>,<span class="title">Name</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Person.<span class="keyword">super</span>.getName();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+关于<strong>类优先</strong>原则的Tip：不要让一个默认方法重新定义<code>Object</code>类中的某个方法，因为类优先原则决定了这样的方法无法超越Object的方法。</li>
+</ul>
+<h4 id="接口与回调"><a href="#接口与回调" class="headerlink" title="接口与回调"></a>接口与回调</h4><p>书上这部分讲得对新手很不友好，我看的这篇博客一目了然。<br><a href="https://blog.csdn.net/qq_43137699/article/details/111181206">案例-接口回调</a></p>
+<h4 id="Comparator接口"><a href="#Comparator接口" class="headerlink" title="Comparator接口"></a>Comparator接口</h4><p>练习：实现一个字符串比较器–根据字符串长度排序，相同长度按照字典顺序。</p>
+<blockquote>
+<p>Arrays.sort()方法可以将数组和一个比较器的实例作为参数，实现自定义的数组排序。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LengthComparator</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">String</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(String s1, String s2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s1.length() != s2.length()) &#123;</span><br><span class="line">            <span class="keyword">return</span> s1.length() - s2.length();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; s1.length(); i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (s1.charAt(i) - <span class="string">&#x27;a&#x27;</span> != s2.charAt(i) - <span class="string">&#x27;a&#x27;</span>) &#123;</span><br><span class="line">                <span class="keyword">return</span> s1.charAt(i) - <span class="string">&#x27;a&#x27;</span> - (s2.charAt(i) - <span class="string">&#x27;a&#x27;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        String[] words = &#123;<span class="string">&quot;peter&quot;</span>, <span class="string">&quot;paul&quot;</span>, <span class="string">&quot;mary&quot;</span>&#125;;</span><br><span class="line">        Arrays.sort(words, <span class="keyword">new</span> LengthComparator());</span><br><span class="line">        <span class="keyword">for</span> (String word : words) &#123;</span><br><span class="line">            System.out.println(word);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="对象克隆"><a href="#对象克隆" class="headerlink" title="对象克隆"></a>对象克隆</h4><p>问题：如果对象包含子对象的引用，拷贝字段就会得到相同子对象的另一个引用，这样原对象和克隆的对象仍然会共享一些信息。</p>
+<ul>
+<li>如果原对象和浅克隆的对象共享的子对象不可变（比如String）那么这种共享是安全的。</li>
+<li>在对象的生命期中，子对象一直包含不变的常量，没有更改器方法改变它，也没有方法生成其引用，这种情况同样安全。</li>
+</ul>
+<p>解决：通常子对象可变，所以需要重新定义<code>clone()</code>建立深拷贝，克隆所有子对象，**并且必须重新定义的<code>clone()</code>修饰为<code>public</code>**。<br>栗子：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee</span> <span class="keyword">implements</span> <span class="title">Cloneable</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">double</span> salary;</span><br><span class="line">    <span class="keyword">private</span> Date hireDay;</span><br><span class="line">    <span class="comment">// ......</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Employee <span class="title">clone</span><span class="params">()</span> <span class="keyword">throws</span> CloneNotSupportedException </span>&#123;</span><br><span class="line">        Employee cloned = (Employee) <span class="keyword">super</span>.clone();</span><br><span class="line">        cloned.hireDay = (Date) hireDay.clone();</span><br><span class="line">        <span class="keyword">return</span> cloned;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h3><blockquote>
+<p>通常格式：<code>()-&gt;&#123;&#125;</code><br>必须包含显式的return语句</p>
+</blockquote>
+<h4 id="函数式接口"><a href="#函数式接口" class="headerlink" title="函数式接口"></a>函数式接口</h4><p>Java有很多封装代码块的接口，比如<code>Comparator</code>、<code>ActionListener</code>等，lambda表达式与这些接口兼容。对于只有一种抽象方法的接口，就可以提供一个lambda表达式，这种接口称为<code>函数式接口</code>。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Arrays.sort(words,(a,b)-&gt;a.length()-b.length())</span><br></pre></td></tr></table></figure>
+<h4 id="方法引用"><a href="#方法引用" class="headerlink" title="方法引用"></a>方法引用</h4><blockquote>
+<ul>
+<li>object::instanceMethod<br>这种情况方法引用等价于向方法传递参数的lambda表达式<br>比如<code>System.out::printly</code>，<code>System.out</code>是对象，方法表达式约等于<code>x-&gt;System.out.println(x)</code>。</li>
+<li>Class::instanceMethod<br>这种情况第一个参数会成为方法的隐式参数，<code>String::compareToIgnoreCase</code>相当于<code>(x,y)-&gt;x.compareToIgnoreCase(y)</code>。</li>
+<li>Class::staticMethod<br>这种情况，所有参数都传递到静态方法中</li>
+</ul>
+</blockquote>
+<h4 id="构造器引用"><a href="#构造器引用" class="headerlink" title="构造器引用"></a>构造器引用</h4><p>栗子</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">People[] people = stream.toArray(Person[]::<span class="keyword">new</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="变量作用域"><a href="#变量作用域" class="headerlink" title="变量作用域"></a>变量作用域</h4><ul>
+<li>lambda可以捕获外围作用域中变量的值，但是<strong>只能引用值不会改变的变量。</strong><br>这种限制是有原因的，比如并发执行多个动作时引用了改变的量那么就是不安全的。</li>
+</ul>
+<p><strong>lambda表达式捕获的变量必须是事实最终变量</strong>，也就是这个变量初始化之后不能再赋新值。</p>
+<ul>
+<li>lambda中不能有同名的局部变量</li>
+</ul>
+<h4 id="Comparator与方法引用"><a href="#Comparator与方法引用" class="headerlink" title="Comparator与方法引用"></a>Comparator与方法引用</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Arrays.sort(people,Comparator.comparing(Person::getName));</span><br><span class="line">Arrays.sort(people,Comparator.comparing(Person::getLastName).thenComparing(Person::getFirstName));</span><br></pre></td></tr></table></figure>
+<p><code>Comparator.comparing()</code>可以有两个参数，第一个是提取sort key的函数，第二个是比较器。</p>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>技术笔记</tag>
+        <tag>Java核心技术</tag>
+      </tags>
+  </entry>
 </search>

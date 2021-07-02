@@ -19,21 +19,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="第三章  primitive主数据类型和引用 变量有两种：primitive主数据类型、引用  primitive主数据类型保存基本类型的值  引用保存对象的引用">
+  <meta name="description" content="定义枚举类12345678910111213public enum Size &amp;#123;    SMALL(&quot;S&quot;), MEDIUM(&quot;M&quot;), LARGE(&quot;L&quot;), EXTRA_LARGE(&quot;XL&quot;);    private String abbreviation;    Size(String abbrevia">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Head First Java 第三章学习笔记">
-<meta property="og:url" content="http://example.com/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:title" content="Java枚举类">
+<meta property="og:url" content="http://example.com/2021/07/01/Java%E6%9E%9A%E4%B8%BE%E7%B1%BB/index.html">
 <meta property="og:site_name" content="pikapika的学习记录">
-<meta property="og:description" content="第三章  primitive主数据类型和引用 变量有两种：primitive主数据类型、引用  primitive主数据类型保存基本类型的值  引用保存对象的引用">
+<meta property="og:description" content="定义枚举类12345678910111213public enum Size &amp;#123;    SMALL(&quot;S&quot;), MEDIUM(&quot;M&quot;), LARGE(&quot;L&quot;), EXTRA_LARGE(&quot;XL&quot;);    private String abbreviation;    Size(String abbrevia">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-03-05T09:21:28.000Z">
-<meta property="article:modified_time" content="2021-03-05T10:06:51.126Z">
+<meta property="article:published_time" content="2021-07-01T13:26:51.000Z">
+<meta property="article:modified_time" content="2021-07-02T08:57:26.361Z">
 <meta property="article:author" content="pikapikaxiu">
 <meta property="article:tag" content="技术笔记">
-<meta property="article:tag" content="Head First Java">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%AC%94%E8%AE%B0/">
+<link rel="canonical" href="http://example.com/2021/07/01/Java%E6%9E%9A%E4%B8%BE%E7%B1%BB/">
 
 
 <script id="page-configurations">
@@ -46,7 +45,7 @@
   };
 </script>
 
-  <title>Head First Java 第三章学习笔记 | pikapika的学习记录</title>
+  <title>Java枚举类 | pikapika的学习记录</title>
   
 
 
@@ -194,7 +193,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%B8%89%E7%AB%A0%E7%AC%94%E8%AE%B0/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/01/Java%E6%9E%9A%E4%B8%BE%E7%B1%BB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/pikachu_pointer.png">
@@ -207,7 +206,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Head First Java 第三章学习笔记
+          Java枚举类
         </h1>
 
         <div class="post-meta">
@@ -216,10 +215,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-03-05 17:21:28 / Modified: 18:06:51" itemprop="dateCreated datePublished" datetime="2021-03-05T17:21:28+08:00">2021-03-05</time>
+              <time title="Created: 2021-07-01 21:26:51" itemprop="dateCreated datePublished" datetime="2021-07-01T21:26:51+08:00">2021-07-01</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-07-02 16:57:26" itemprop="dateModified" datetime="2021-07-02T16:57:26+08:00">2021-07-02</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -241,97 +246,23 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="第三章-primitive主数据类型和引用"><a href="#第三章-primitive主数据类型和引用" class="headerlink" title="第三章  primitive主数据类型和引用"></a>第三章  primitive主数据类型和引用</h2><ol>
-<li><p>变量有两种：<code>primitive主数据类型</code>、<code>引用</code></p>
+        <h3 id="定义枚举类"><a href="#定义枚举类" class="headerlink" title="定义枚举类"></a>定义枚举类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">Size</span> </span>&#123;</span><br><span class="line">    SMALL(<span class="string">&quot;S&quot;</span>), MEDIUM(<span class="string">&quot;M&quot;</span>), LARGE(<span class="string">&quot;L&quot;</span>), EXTRA_LARGE(<span class="string">&quot;XL&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String abbreviation;</span><br><span class="line"></span><br><span class="line">    Size(String abbreviation) &#123;</span><br><span class="line">        <span class="keyword">this</span>.abbreviation = abbreviation;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getAbbreviation</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> abbreviation;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p><code>primitive主数据类型</code><br>保存基本类型的值</p>
-</li>
-<li><p><code>引用</code><br>保存对象的引用</p>
-<span id="more"></span></li>
+<li>这里定义了一个枚举类<code>Size</code>，<code>Size</code>里有四个实例，不可能构造新的对象。</li>
+<li>枚举的构造器总是私有的，但可以省略<code>private</code>修饰符</li>
+<li>上面这个例子里，构造器要传入一个类型为<code>String</code>的参数，所以枚举值也要传入对应的参数。</li>
 </ul>
-<table>
-<thead>
-<tr>
-<th align="center"></th>
-<th align="center">类型</th>
-<th align="center">位数</th>
-<th align="center">值域</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center"><code>boolean</code></td>
-<td align="center">boolean</td>
-<td align="center">JVM决定</td>
-<td align="center">True或False</td>
-</tr>
-<tr>
-<td align="center"><code>char</code></td>
-<td align="center">char</td>
-<td align="center">16bits</td>
-<td align="center">0~65535</td>
-</tr>
-<tr>
-<td align="center"><code>integer</code></td>
-<td align="center">byte</td>
-<td align="center">8bits</td>
-<td align="center">-128~127</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center">short</td>
-<td align="center">16bits</td>
-<td align="center">-2^15 ~ 2^15 -1</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center">int</td>
-<td align="center">32bits</td>
-<td align="center">-2^31 ~ 2^31-1</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center">long</td>
-<td align="center">64bits</td>
-<td align="center">-很大~+很大</td>
-</tr>
-<tr>
-<td align="center"><code>浮点型</code></td>
-<td align="center">float</td>
-<td align="center">32bits</td>
-<td align="center">范围规模可变</td>
-</tr>
-<tr>
-<td align="center"></td>
-<td align="center">doubale</td>
-<td align="center">64bits</td>
-<td align="center">范围规模可变</td>
-</tr>
-</tbody></table>
-<p> 小数默认为<code>double</code>,<code>float</code>标注为：float a = 3.14f;</p>
-</li>
-<li><p>primitive主数据类型赋值时要小心溢出</p>
-</li>
-<li><p>对象引用</p>
+<h3 id="枚举类中的常用方法"><a href="#枚举类中的常用方法" class="headerlink" title="枚举类中的常用方法"></a>枚举类中的常用方法</h3><p>所有的枚举类型都是<code>Enum</code>类的子类，继承这个类的诸多方法，下面列出一些常用的。</p>
+<h4 id="String-toString"><a href="#String-toString" class="headerlink" title="String toString()"></a><code>String toString()</code></h4><p>返回枚举常量名</p>
+<h4 id="static-Enum-valueOf-Class-enumClass-String-name"><a href="#static-Enum-valueOf-Class-enumClass-String-name" class="headerlink" title="static Enum valueOf(Class enumClass,String name)"></a><code>static Enum valueOf(Class enumClass,String name)</code></h4><p>返回给定类中有指定名字的枚举常量,注意示例里参数。</p>
+<h4 id="int-ordinal"><a href="#int-ordinal" class="headerlink" title="int ordinal()"></a><code>int ordinal()</code></h4><p>返回枚举常量在enum声明中的位置，从0开始计数。</p>
+<h4 id="int-compareTo-E-other"><a href="#int-compareTo-E-other" class="headerlink" title="int compareTo(E other)"></a><code>int compareTo(E other)</code></h4><p>返回枚举常量和<code>other</code>的出现次序。</p>
 <ul>
-<li>没有对象变量，只有<strong>引用到对象的变量</strong>。</li>
-<li>对象引用变量保存的是存取变量的方法</li>
-<li><strong>对象引用变量</strong>并不是对象的容器，而是<strong>类似指向对象的指针，或者是地址</strong>。在Java中不知道也不必知道引用变量中实际装载的是什么，只有JVM才会知道如何使用引用来取得该对象。</li>
+<li>出现在<code>other</code>前，返回负整数。</li>
+<li><code>this == other</code>，返回0。</li>
+<li>出现在<code>other</code>后，返回正整数。</li>
 </ul>
-</li>
-<li><p>对象声明、创建于赋值的3个步骤</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Dog myDog = <span class="keyword">new</span> Dog();</span><br></pre></td></tr></table></figure>
-<ol>
-<li>声明一个引用变量 <code>Dog myDog</code>：要求JVM分配空间给引用变量，此引用变量永远是Dog类型。但是myDog可以引用不同的Dog，除非被<code>final</code>修饰，那样只能引用固定的Dog不会再变。也可以引用到空指针。</li>
-<li>创建对象 <code>new Dog()</code>：要求JVM分配堆空间给新建的Dog对象。</li>
-<li>连接对象和引用 <code>=</code></li>
-</ol>
-</li>
-<li><p>int数组</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] nums = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">7</span>];</span><br></pre></td></tr></table></figure>
-<p> 数组是对象，里面的元素是primitive主数据类型</p>
-</li>
-</ol>
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    System.out.println(Size.SMALL.toString());</span><br><span class="line">    System.out.println(Size.MEDIUM.compareTo(Size.EXTRA_LARGE));</span><br><span class="line">    Size size = Enum.valueOf(Size.class, <span class="string">&quot;MEDIUM&quot;</span>);</span><br><span class="line">    System.out.println(size.ordinal());</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// SMALL</span></span><br><span class="line"><span class="comment">// -2</span></span><br><span class="line"><span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
     </div>
 
     
@@ -341,7 +272,6 @@
       <footer class="post-footer">
           <div class="post-tags">
               <a href="/tags/%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/" rel="tag"># 技术笔记</a>
-              <a href="/tags/Head-First-Java/" rel="tag"># Head First Java</a>
           </div>
 
         
@@ -350,13 +280,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E5%85%AB%E7%AB%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="Head First Java 第八章学习笔记">
-      <i class="fa fa-chevron-left"></i> Head First Java 第八章学习笔记
+    <a href="/2021/06/10/Java%E6%95%B0%E7%BB%84%E7%9A%84%E5%88%A4%E6%96%AD%E7%9B%B8%E7%AD%89/" rel="prev" title="Java数组的判断相等">
+      <i class="fa fa-chevron-left"></i> Java数组的判断相等
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%B8%83%E7%AB%A0%E7%AC%94%E8%AE%B0/" rel="next" title="Head First Java 第七章学习笔记">
-      Head First Java 第七章学习笔记 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -415,7 +342,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-primitive%E4%B8%BB%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8"><span class="nav-number">1.</span> <span class="nav-text">第三章  primitive主数据类型和引用</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E6%9E%9A%E4%B8%BE%E7%B1%BB"><span class="nav-number">1.</span> <span class="nav-text">定义枚举类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%9A%E4%B8%BE%E7%B1%BB%E4%B8%AD%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">枚举类中的常用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#String-toString"><span class="nav-number">2.1.</span> <span class="nav-text">String toString()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#static-Enum-valueOf-Class-enumClass-String-name"><span class="nav-number">2.2.</span> <span class="nav-text">static Enum valueOf(Class enumClass,String name)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#int-ordinal"><span class="nav-number">2.3.</span> <span class="nav-text">int ordinal()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#int-compareTo-E-other"><span class="nav-number">2.4.</span> <span class="nav-text">int compareTo(E other)</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

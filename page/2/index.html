@@ -187,6 +187,84 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/05/Python%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B901/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/pikachu_pointer.png">
+      <meta itemprop="name" content="pikapikaxiu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="pikapika的学习记录">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/03/05/Python%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B901/" class="post-title-link" itemprop="url">Python零碎知识点记录01</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-03-05 18:27:38 / Modified: 18:37:45" itemprop="dateCreated datePublished" datetime="2021-03-05T18:27:38+08:00">2021-03-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>这个记录并不成体系，只是随手记录的知识点做个归档，积攒一部分后就继续补充  </p>
+<ol>
+<li><p>取整</p>
+ <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a=<span class="number">3.14</span></span><br><span class="line"><span class="built_in">int</span>(a)  <span class="comment"># 向下取整 3</span></span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line">math.ceil(a)  <span class="comment"># 向上取整 4</span></span><br><span class="line"><span class="built_in">round</span>(a)  <span class="comment"># 四舍五入</span></span><br><span class="line">math.modf(a) <span class="comment"># (0.14,3.0) 分别取小数和整数部分，返回元组</span></span><br><span class="line">math.modf(<span class="number">4.2</span>)  </span><br><span class="line"><span class="comment"># (0.20000000000000018, 4.0)</span></span><br><span class="line"><span class="comment"># 按理说应该返回 (0.2, 4.0) 才对。这里涉及到了另一个问题，即浮点数在计算机中的表示，在计算机中是无法精确的表示小数的，至少目前的计算机做不到这一点。上例中最后的输出结果只是 0.2 在计算中的近似表示。Python 和 C 一样, 采用 IEEE 754 规范来存储浮点数。</span></span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/03/05/Python%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B901/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/05/Head%20First%20Java%20%E7%AC%AC%E4%B8%83%E7%AB%A0%E7%AC%94%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -818,7 +896,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

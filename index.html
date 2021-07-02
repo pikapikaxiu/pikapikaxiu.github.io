@@ -187,6 +187,95 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/01/Java%E6%9E%9A%E4%B8%BE%E7%B1%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/pikachu_pointer.png">
+      <meta itemprop="name" content="pikapikaxiu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="pikapika的学习记录">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/07/01/Java%E6%9E%9A%E4%B8%BE%E7%B1%BB/" class="post-title-link" itemprop="url">Java枚举类</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2021-07-01 21:26:51" itemprop="dateCreated datePublished" datetime="2021-07-01T21:26:51+08:00">2021-07-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-07-02 16:57:26" itemprop="dateModified" datetime="2021-07-02T16:57:26+08:00">2021-07-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index"><span itemprop="name">Java</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="定义枚举类"><a href="#定义枚举类" class="headerlink" title="定义枚举类"></a>定义枚举类</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">enum</span> <span class="title">Size</span> </span>&#123;</span><br><span class="line">    SMALL(<span class="string">&quot;S&quot;</span>), MEDIUM(<span class="string">&quot;M&quot;</span>), LARGE(<span class="string">&quot;L&quot;</span>), EXTRA_LARGE(<span class="string">&quot;XL&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> String abbreviation;</span><br><span class="line"></span><br><span class="line">    Size(String abbreviation) &#123;</span><br><span class="line">        <span class="keyword">this</span>.abbreviation = abbreviation;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getAbbreviation</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> abbreviation;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>这里定义了一个枚举类<code>Size</code>，<code>Size</code>里有四个实例，不可能构造新的对象。</li>
+<li>枚举的构造器总是私有的，但可以省略<code>private</code>修饰符</li>
+<li>上面这个例子里，构造器要传入一个类型为<code>String</code>的参数，所以枚举值也要传入对应的参数。</li>
+</ul>
+<h3 id="枚举类中的常用方法"><a href="#枚举类中的常用方法" class="headerlink" title="枚举类中的常用方法"></a>枚举类中的常用方法</h3><p>所有的枚举类型都是<code>Enum</code>类的子类，继承这个类的诸多方法，下面列出一些常用的。</p>
+<h4 id="String-toString"><a href="#String-toString" class="headerlink" title="String toString()"></a><code>String toString()</code></h4><p>返回枚举常量名</p>
+<h4 id="static-Enum-valueOf-Class-enumClass-String-name"><a href="#static-Enum-valueOf-Class-enumClass-String-name" class="headerlink" title="static Enum valueOf(Class enumClass,String name)"></a><code>static Enum valueOf(Class enumClass,String name)</code></h4><p>返回给定类中有指定名字的枚举常量,注意示例里参数。</p>
+<h4 id="int-ordinal"><a href="#int-ordinal" class="headerlink" title="int ordinal()"></a><code>int ordinal()</code></h4><p>返回枚举常量在enum声明中的位置，从0开始计数。</p>
+<h4 id="int-compareTo-E-other"><a href="#int-compareTo-E-other" class="headerlink" title="int compareTo(E other)"></a><code>int compareTo(E other)</code></h4><p>返回枚举常量和<code>other</code>的出现次序。</p>
+<ul>
+<li>出现在<code>other</code>前，返回负整数。</li>
+<li><code>this == other</code>，返回0。</li>
+<li>出现在<code>other</code>后，返回正整数。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    System.out.println(Size.SMALL.toString());</span><br><span class="line">    System.out.println(Size.MEDIUM.compareTo(Size.EXTRA_LARGE));</span><br><span class="line">    Size size = Enum.valueOf(Size.class, <span class="string">&quot;MEDIUM&quot;</span>);</span><br><span class="line">    System.out.println(size.ordinal());</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// SMALL</span></span><br><span class="line"><span class="comment">// -2</span></span><br><span class="line"><span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2021/06/10/Java%E6%95%B0%E7%BB%84%E7%9A%84%E5%88%A4%E6%96%AD%E7%9B%B8%E7%AD%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -872,84 +961,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2021/03/05/Python%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B901/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/pikachu_pointer.png">
-      <meta itemprop="name" content="pikapikaxiu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="pikapika的学习记录">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/03/05/Python%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B901/" class="post-title-link" itemprop="url">Python零碎知识点记录01</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2021-03-05 18:27:38 / Modified: 18:37:45" itemprop="dateCreated datePublished" datetime="2021-03-05T18:27:38+08:00">2021-03-05</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index"><span itemprop="name">Python</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>这个记录并不成体系，只是随手记录的知识点做个归档，积攒一部分后就继续补充  </p>
-<ol>
-<li><p>取整</p>
- <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a=<span class="number">3.14</span></span><br><span class="line"><span class="built_in">int</span>(a)  <span class="comment"># 向下取整 3</span></span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line">math.ceil(a)  <span class="comment"># 向上取整 4</span></span><br><span class="line"><span class="built_in">round</span>(a)  <span class="comment"># 四舍五入</span></span><br><span class="line">math.modf(a) <span class="comment"># (0.14,3.0) 分别取小数和整数部分，返回元组</span></span><br><span class="line">math.modf(<span class="number">4.2</span>)  </span><br><span class="line"><span class="comment"># (0.20000000000000018, 4.0)</span></span><br><span class="line"><span class="comment"># 按理说应该返回 (0.2, 4.0) 才对。这里涉及到了另一个问题，即浮点数在计算机中的表示，在计算机中是无法精确的表示小数的，至少目前的计算机做不到这一点。上例中最后的输出结果只是 0.2 在计算中的近似表示。Python 和 C 一样, 采用 IEEE 754 规范来存储浮点数。</span></span><br></pre></td></tr></table></figure>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/03/05/Python%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86%E7%82%B901/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1021,7 +1032,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">18</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
